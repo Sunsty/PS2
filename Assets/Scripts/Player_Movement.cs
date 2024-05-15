@@ -49,7 +49,12 @@ public class Player_Movement : MonoBehaviour
     
     public float dirX;
     private bool isJumping;
-    private float jumpCoef;
+    private Vector2 tempClamp;
+
+    public bool isGrounded;
+    public Transform groundCheckLeft;
+    public Transform groundCheckRight;
+    private bool wantsJumping;
 
     private void FixedUpdate()
     {
@@ -60,14 +65,12 @@ public class Player_Movement : MonoBehaviour
         if (isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(Vector2.up * (jumpspeed * jumpCoef), ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpspeed, ForceMode2D.Impulse);
             isJumping = false;
         }
 
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
-
-        Debug.Log(rb.velocity);
-        Debug.Log(test);
+        tempClamp = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+        rb.velocity = new Vector2(tempClamp.x , rb.velocity.y);
 
     }
 
@@ -75,13 +78,20 @@ public class Player_Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isJumping = true;
-            jumpCoef = 1f;
+            wantsJumping = true;
+        }
+        else
+        {
+            wantsJumping = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (wantsJumping && isGrounded)
         {
-            jumpCoef = 0.5f;
+            isJumping = true;
         }
+
+        isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);    
+        
     }
+
 }
