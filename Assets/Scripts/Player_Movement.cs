@@ -4,28 +4,26 @@ using UnityEngine;
 
 /// <summary>
 /// 
-/// 
-/// 
 /// ////////////////////////////////// TODO /////////////////////////////// 
 /// 
 /// - Base Movement -
 /// 
 ///     Left or right movement #DONE#
-///     acceleration/decceleration *WIP*
-///     Good feeling *WIP*
+///     acceleration/decceleration #DONE#
+///     Good feeling #DONE#
 /// 
 /// - Jump -
 /// 
-///     Only when grounded *WIP*
-///     Hold JUMP to go higher *WIP*
+///     Only when grounded #DONE#
+///     Hold JUMP to go higher 
 ///     Reset Y velocity #DONE#
-///     Good Feeling *WIP*
+///     Good Feeling #DONE#
 /// 
 /// - Fly system -
 ///     
-///     Gravity affected
-///     Limited time / Reset on grounded
-///     Has to jump beforhand / only in the air
+///     Gravity affected #DONE#
+///     Limited time / Reset on grounded *WIP*
+///     Has to jump beforhand / only in the air #DONE#
 ///     
 /// - Dash -
 /// 
@@ -55,14 +53,18 @@ public class Player_Movement : MonoBehaviour
     public float jumpspeed;
     public float flyTimeOffset;
     public float flySpeed;
+    public float dashCooldown;
+    public float dashForce;
+    public float maxVelocityX;
+    public float maxVelocityY;
 
     [Header("")]
 
     float dirX;
     bool isJumping;
-    Vector2 tempClamp;
+    float maxSpeed;
 
-    public bool isGrounded;
+    bool isGrounded;
 
     bool wantsJumping;
     Vector2 jumpDir;
@@ -71,17 +73,23 @@ public class Player_Movement : MonoBehaviour
     bool hasJumped;
     float jumpedCounter;
     bool canFly;
+    bool isDashing;
+    bool wantsDashing;
+    float dashCounter;
+    bool canDash = true;
+    private Vector2 currentVelocity;
+
 
     private void FixedUpdate()
     {
         dirX = Input.GetAxis("Horizontal");
         Vector2 test = Vector2.right * dirX * acceleration;
+
         rb.AddForce(Vector2.right * dirX * acceleration);
 
 
         if (isJumping)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(jumpDir, ForceMode2D.Impulse);
             isJumping = false;
             hasJumped = true;
@@ -91,16 +99,67 @@ public class Player_Movement : MonoBehaviour
         {
             rb.AddForce(jumpDir * flySpeed);
         }
-        
-        tempClamp = Vector2.ClampMagnitude(new Vector2(rb.velocity.x,0), maxVelocity);
-        rb.velocity = new Vector2(tempClamp.x , rb.velocity.y);        
 
+        float tempClampX = Mathf.Clamp(rb.velocity.x, -maxVelocityX, maxVelocityX);
+        float tempClampY = Mathf.Clamp(rb.velocity.y, -maxVelocityY, maxVelocityY);
+        rb.velocity = new Vector2(tempClampX, tempClampY);
+
+        if (isDashing)
+        {
+
+            if (dashCounter <= 0f)
+            {
+                dashCounter = dashCooldown;
+            }
+
+            if (dirX > 0f)
+            {
+                rb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+            }
+            else if (dirX < 0f)
+            {
+                rb.AddForce(Vector2.right * -dashForce, ForceMode2D.Impulse);
+            }
+
+            isDashing = false;
+            canDash = false;
+        }
+
+        if (dashCounter > 0f)
+        {
+
+            dashCounter -= Time.fixedDeltaTime;
+
+            if (dashCounter <= 0f)
+            {
+                canDash = true;
+            }
+        }
+        
+
+        if (rb.velocity.x > 15f)
+        {
+        rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), ref currentVelocity, 1f, Mathf.Infinity, Time.fixedDeltaTime);
+        }
+        
+        if (rb.velocity.x < 15f)
+        {
+        rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), ref currentVelocity, 1f, Mathf.Infinity, Time.fixedDeltaTime);
+        }
+
+
+
+
+
+        Debug.Log(rb.velocity);
     }
 
     private void Update()
     {
 
         ////////////////////////////////////////////////////////////
+        
+        /// Jump ///
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -111,6 +170,8 @@ public class Player_Movement : MonoBehaviour
             wantsJumping = false;
         }
 
+        /// Fly ///
+
         if (Input.GetKey(KeyCode.Space))
         {
             wantsFlying = true;
@@ -120,12 +181,27 @@ public class Player_Movement : MonoBehaviour
             wantsFlying = false;
         }
 
+        /// Dash ///
+
+        if (Input.GetKeyDown(KeyCode.E) && canDash)
+        {
+            wantsDashing = true;
+        }
+        else
+        {
+            wantsDashing = false;
+        }
+
         ////////////////////////////////////////////////////////////
+        
+        /// Jump ///
 
         if (wantsJumping && isGrounded)
         {
             isJumping = true;
         }
+
+        /// Fly ///
 
         if (wantsFlying)
         {
@@ -134,6 +210,13 @@ public class Player_Movement : MonoBehaviour
         else
         {
             isFlying = false;
+        }
+
+        /// Dash ///
+
+        if (wantsDashing)
+        {
+            isDashing = true;
         }
 
         ////////////////////////////////////////////////////////////
@@ -177,6 +260,11 @@ public class Player_Movement : MonoBehaviour
         {
             jumpedCounter = 0f;
         }
+
+        ////////////////////////////////////////////////////////////
+
+
+
     }
 
 }
