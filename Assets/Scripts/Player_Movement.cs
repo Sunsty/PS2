@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -11,27 +12,29 @@ using UnityEngine;
 ///     Left or right movement #DONE#
 ///     acceleration/decceleration #DONE#
 ///     Good feeling #DONE#
+///     DOWN to go off a platform #DONE#
 /// 
 /// - Jump -
 /// 
 ///     Only when grounded #DONE#
-///     Hold JUMP to go higher 
 ///     Reset Y velocity #DONE#
 ///     Good Feeling #DONE#
 /// 
 /// - Fly system -
 ///     
 ///     Gravity affected #DONE#
-///     Limited time / Reset on grounded *WIP*
+///     Limited time / Reset on grounded #DONE# 
+///         FOR DISPLAY : |flyingFuel| |maxFlyingFuel|
 ///     Has to jump beforhand / only in the air #DONE#
+///     Glide when out of fuel
 ///     
 /// - Dash -
 /// 
-///     Independent from - Base Movement -
-///     Instant short dash
-///     Possible while grounded
-///     Possible while in the air
-///     Cooldown with feedback
+///     Independent from - Base Movement - #DONE#
+///     Instant short dash #DONE#
+///     Possible while grounded #DONE# 
+///     Possible while in the air #DONE#
+///     Cooldown with feedback 
 /// 
 /// ///////////////////////////////////////////////////////////////////////
 /// 
@@ -45,6 +48,7 @@ public class Player_Movement : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheckLeft;
     public Transform groundCheckRight;
+    public Image fuelBar;
 
     [Header("Settings")]
 
@@ -57,6 +61,8 @@ public class Player_Movement : MonoBehaviour
     public float dashForce;
     public float maxVelocityX;
     public float maxVelocityY;
+    public float maxFlyingFuel;
+    public float downLenght;
 
     [Header("")]
 
@@ -77,16 +83,25 @@ public class Player_Movement : MonoBehaviour
     bool wantsDashing;
     float dashCounter;
     bool canDash = true;
-    private Vector2 currentVelocity;
-
+    Vector2 currentVelocity;
+    float tempForce;
+    bool clampOverwrite;
+    float flyingFuel;
+    private bool wantsDown;
+    private bool wentThrough;
+    private bool hasDown;
+    private float downCounter;
 
     private void FixedUpdate()
     {
+        ////////////////////////////////////////////////////////////
+
         dirX = Input.GetAxis("Horizontal");
         Vector2 test = Vector2.right * dirX * acceleration;
 
         rb.AddForce(Vector2.right * dirX * acceleration);
 
+        ////////////////////////////////////////////////////////////
 
         if (isJumping)
         {
@@ -95,14 +110,25 @@ public class Player_Movement : MonoBehaviour
             hasJumped = true;
         }
 
-        if (isFlying && canFly)
+        ////////////////////////////////////////////////////////////
+
+        if (isFlying && canFly && flyingFuel > 0f)
         {
+            flyingFuel -= Time.fixedDeltaTime;
             rb.AddForce(jumpDir * flySpeed);
         }
+
+        ////////////////////////////////////////////////////////////
+
+        /// - GLIDE - ///
+
+        ////////////////////////////////////////////////////////////
 
         float tempClampX = Mathf.Clamp(rb.velocity.x, -maxVelocityX, maxVelocityX);
         float tempClampY = Mathf.Clamp(rb.velocity.y, -maxVelocityY, maxVelocityY);
         rb.velocity = new Vector2(tempClampX, tempClampY);
+
+        ////////////////////////////////////////////////////////////
 
         if (isDashing)
         {
@@ -114,11 +140,11 @@ public class Player_Movement : MonoBehaviour
 
             if (dirX > 0f)
             {
-                rb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+                tempForce = dashForce;
             }
             else if (dirX < 0f)
             {
-                rb.AddForce(Vector2.right * -dashForce, ForceMode2D.Impulse);
+                tempForce = -dashForce;
             }
 
             isDashing = false;
@@ -127,36 +153,38 @@ public class Player_Movement : MonoBehaviour
 
         if (dashCounter > 0f)
         {
+            clampOverwrite = true;
+
+            rb.AddForce(Vector2.right * tempForce * dashCounter, ForceMode2D.Impulse);
 
             dashCounter -= Time.fixedDeltaTime;
 
             if (dashCounter <= 0f)
             {
+                clampOverwrite = false;
                 canDash = true;
             }
         }
         
-
-        if (rb.velocity.x > 15f)
+        if (!clampOverwrite)
         {
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), ref currentVelocity, 1f, Mathf.Infinity, Time.fixedDeltaTime);
-        }
+            if (rb.velocity.x > 15f)
+            {
+            rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), ref currentVelocity, 1f, Mathf.Infinity, Time.fixedDeltaTime);
+            }
         
-        if (rb.velocity.x < 15f)
-        {
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), ref currentVelocity, 1f, Mathf.Infinity, Time.fixedDeltaTime);
+            if (rb.velocity.x < 15f)
+            {
+            rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), ref currentVelocity, 1f, Mathf.Infinity, Time.fixedDeltaTime);
+            }
         }
 
+        ////////////////////////////////////////////////////////////
 
-
-
-
-        Debug.Log(rb.velocity);
     }
 
     private void Update()
     {
-
         ////////////////////////////////////////////////////////////
         
         /// Jump ///
@@ -183,13 +211,24 @@ public class Player_Movement : MonoBehaviour
 
         /// Dash ///
 
-        if (Input.GetKeyDown(KeyCode.E) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             wantsDashing = true;
         }
         else
         {
             wantsDashing = false;
+        }
+
+        /// Down ///
+        
+        if (Input.GetKey(KeyCode.S))
+        {
+            wantsDown = true;
+        }
+        else
+        {
+            wantsDown = false;
         }
 
         ////////////////////////////////////////////////////////////
@@ -214,7 +253,7 @@ public class Player_Movement : MonoBehaviour
 
         /// Dash ///
 
-        if (wantsDashing)
+        if (wantsDashing && dirX != 0)
         {
             isDashing = true;
         }
@@ -259,12 +298,55 @@ public class Player_Movement : MonoBehaviour
         if (isGrounded)
         {
             jumpedCounter = 0f;
+            flyingFuel = maxFlyingFuel;
         }
 
         ////////////////////////////////////////////////////////////
 
+        fuelBar.fillAmount = flyingFuel / maxFlyingFuel;
 
+        ////////////////////////////////////////////////////////////
 
+        if (wantsDown)
+        {
+            GameObject[] platforms = GameObject.FindGameObjectsWithTag("OW Platform");
+            foreach (GameObject plat in platforms)
+            {
+                plat.GetComponent<Collider2D>().enabled = false;
+            }
+
+            hasDown = true;
+        }
+
+        else if (!wantsDown && !wentThrough)
+        {
+            GameObject[] platforms = GameObject.FindGameObjectsWithTag("OW Platform");
+            foreach (GameObject plat in platforms)
+            {
+                plat.GetComponent<Collider2D>().enabled = true;
+            }
+        }
+
+        if (hasDown)
+        {
+            if (downCounter <= 0f)
+            {
+                downCounter = downLenght;
+            }
+
+            wentThrough = true;
+
+            hasDown = false;
+        }
+
+        if (downCounter > 0f)
+        {
+            downCounter -= Time.deltaTime;
+
+            if (downCounter < 0f)
+            {
+                wentThrough = false;
+            }
+        }
     }
-
 }
