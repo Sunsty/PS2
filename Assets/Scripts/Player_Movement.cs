@@ -26,7 +26,7 @@ using UnityEngine.UI;
 ///     Limited time / Reset on grounded #DONE# 
 ///         FOR DISPLAY : |flyingFuel| |maxFlyingFuel|
 ///     Has to jump beforhand / only in the air #DONE#
-///     Glide when out of fuel
+///     Glide when out of fuel #DONE#
 ///     
 /// - Dash -
 /// 
@@ -34,7 +34,7 @@ using UnityEngine.UI;
 ///     Instant short dash #DONE#
 ///     Possible while grounded #DONE# 
 ///     Possible while in the air #DONE#
-///     Cooldown with feedback 
+///     Cooldown #DONE#
 /// 
 /// ///////////////////////////////////////////////////////////////////////
 /// 
@@ -49,6 +49,7 @@ public class Player_Movement : MonoBehaviour
     public Transform groundCheckLeft;
     public Transform groundCheckRight;
     public Image fuelBar;
+    public SpriteRenderer sprite;
 
     [Header("Settings")]
 
@@ -57,12 +58,14 @@ public class Player_Movement : MonoBehaviour
     public float jumpspeed;
     public float flyTimeOffset;
     public float flySpeed;
-    public float dashCooldown;
+    public float dashLenght;
     public float dashForce;
     public float maxVelocityX;
     public float maxVelocityY;
     public float maxFlyingFuel;
     public float downLenght;
+    public float glideCoef;
+    public float dashCooldown;
 
     [Header("")]
 
@@ -91,6 +94,10 @@ public class Player_Movement : MonoBehaviour
     private bool wentThrough;
     private bool hasDown;
     private float downCounter;
+    float tempClamp;
+    private bool hasDashCd = true;
+    private bool hasDashed;
+    private float dashCdCounter;
 
     private void FixedUpdate()
     {
@@ -120,12 +127,19 @@ public class Player_Movement : MonoBehaviour
 
         ////////////////////////////////////////////////////////////
 
-        /// - GLIDE - ///
+        if (isFlying && canFly && flyingFuel < 0f)
+        {
+            tempClamp = glideCoef;
+        }
+        else
+        {
+            tempClamp = 1;
+        }
 
         ////////////////////////////////////////////////////////////
 
         float tempClampX = Mathf.Clamp(rb.velocity.x, -maxVelocityX, maxVelocityX);
-        float tempClampY = Mathf.Clamp(rb.velocity.y, -maxVelocityY, maxVelocityY);
+        float tempClampY = Mathf.Clamp(rb.velocity.y, -maxVelocityY * tempClamp, maxVelocityY);
         rb.velocity = new Vector2(tempClampX, tempClampY);
 
         ////////////////////////////////////////////////////////////
@@ -135,7 +149,7 @@ public class Player_Movement : MonoBehaviour
 
             if (dashCounter <= 0f)
             {
-                dashCounter = dashCooldown;
+                dashCounter = dashLenght;
             }
 
             if (dirX > 0f)
@@ -161,6 +175,7 @@ public class Player_Movement : MonoBehaviour
 
             if (dashCounter <= 0f)
             {
+                hasDashed = true;
                 clampOverwrite = false;
                 canDash = true;
             }
@@ -180,7 +195,28 @@ public class Player_Movement : MonoBehaviour
         }
 
         ////////////////////////////////////////////////////////////
+        
+        if (hasDashed)
+        {
+            if (dashCdCounter <= 0f)
+            {
+                dashCdCounter = dashCooldown;
+            }
 
+            hasDashCd = false;
+
+            hasDashed = false;
+        }
+
+        if (dashCdCounter > 0f)
+        {
+            dashCdCounter -= Time.fixedDeltaTime;
+
+            if ( dashCdCounter < 0f)
+            {
+                hasDashCd = true;
+            }
+        }
     }
 
     private void Update()
@@ -253,7 +289,7 @@ public class Player_Movement : MonoBehaviour
 
         /// Dash ///
 
-        if (wantsDashing && dirX != 0)
+        if (wantsDashing && dirX != 0 && hasDashCd)
         {
             isDashing = true;
         }

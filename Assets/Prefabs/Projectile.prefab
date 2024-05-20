@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bdcd6da814e4f14eab793c11d7aa2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelLenght: 15
+  travelLenght: 20
