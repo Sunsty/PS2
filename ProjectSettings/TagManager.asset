@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - OW Platform
+  - Boss
+  - Environment
   layers:
   - Default
   - TransparentFX
