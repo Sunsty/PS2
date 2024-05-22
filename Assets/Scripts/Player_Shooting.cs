@@ -6,21 +6,21 @@ public class Player_Shooting : MonoBehaviour
 {
     [Header("Imports")]
 
-    public GameObject bullet;
-    public Transform firePoint;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform firePoint;
 
     [Header("Settings")]
 
-    public float bulletSpeed = 50;
-    public float fireRate = 0.01f;
+    [SerializeField] float bulletSpeed = 50;
+    [SerializeField] float fireRate = 0.01f;
 
     [Header("")]
 
     Vector2 lookDirection;
     float lookAngle;
-    private bool isShooting = true;
-    private float shootingCounter;
-    private bool wantsToShot;
+    bool isShooting = true;
+    float shootingCounter;
+    bool wantsToShot;
 
     private void Update()
     {

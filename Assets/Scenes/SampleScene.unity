@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 252538907}
-  fireBall: {fileID: 2681540581699992244, guid: 4e76e0e3beb8df643b4aece222137581, type: 3}
+  circleWaveProjectile: {fileID: 3685789619600078298, guid: cf3bd19fb34e0d24186058ce6801d10d, type: 3}
   pattern1BossWaypoints:
   - {fileID: 1797298819}
   - {fileID: 33811915}
@@ -845,10 +845,13 @@ MonoBehaviour:
   dashCdPattern1: 5
   dashSpeedPattern1: 2
   normalSpeedPattern1: 1
+  fireBall: {fileID: 8525503435363123609, guid: a0dfd78798f756f43850e7e0a766b3ac, type: 3}
   dashCdPattern2: 7
   dashSpeedPattern2: 3
   normalSpeedPattern2: 1
   normalSpeedPattern3: 5
+  wavesCd: 3
+  baseNbrProjectile: 20
 --- !u!4 &275170307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5572626416041524853, guid: 13287c05205d39541a24694dd6987dda, type: 3}
@@ -1809,52 +1812,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149612853}
   m_CullTransparentMesh: 1
---- !u!1 &1159099418
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1159099419}
-  - component: {fileID: 1159099420}
-  m_Layer: 0
-  m_Name: Circle Projectile Wave
-  m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1159099419
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159099418}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.9, y: 40, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1159099420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159099418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaaa12128e8b2e54294f262a0a918712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 2681540581699992244, guid: 4e76e0e3beb8df643b4aece222137581, type: 3}
-  projectileSpeed: 10
 --- !u!4 &1221479239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5572626416041524853, guid: 13287c05205d39541a24694dd6987dda, type: 3}
@@ -2385,6 +2342,7 @@ GameObject:
   - component: {fileID: 1879358883}
   - component: {fileID: 1879358882}
   - component: {fileID: 1879358881}
+  - component: {fileID: 1879358884}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Environment
@@ -2504,6 +2462,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1879358884
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879358880}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1879495547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2924,4 +2909,3 @@ SceneRoots:
   - {fileID: 643714581}
   - {fileID: 1956600653}
   - {fileID: 252538910}
-  - {fileID: 1159099419}

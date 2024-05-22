@@ -1,0 +1,348 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8817901022049236241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5749493958952898097}
+  m_Layer: 0
+  m_Name: Eruption Projectiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5749493958952898097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817901022049236241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -56.25494, y: 12.336182, z: 0.028964126}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5303733144014541423}
+  - {fileID: 5797405796547431513}
+  - {fileID: 4274955045640595057}
+  - {fileID: 3457036911645783179}
+  - {fileID: 7314283742727438280}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &838823707271137646
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5749493958952898097}
+    m_Modifications:
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088558509558388067, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_Name
+      value: Boss 1 Eruption Projectile Variant (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+--- !u!4 &3457036911645783179 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+  m_PrefabInstance: {fileID: 838823707271137646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2237855258358717332
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5749493958952898097}
+    m_Modifications:
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088558509558388067, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_Name
+      value: Boss 1 Eruption Projectile Variant (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+--- !u!4 &4274955045640595057 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+  m_PrefabInstance: {fileID: 2237855258358717332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4745750816679461421
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5749493958952898097}
+    m_Modifications:
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088558509558388067, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_Name
+      value: Boss 1 Eruption Projectile Variant (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+--- !u!4 &7314283742727438280 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+  m_PrefabInstance: {fileID: 4745750816679461421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7910397130092457866
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5749493958952898097}
+    m_Modifications:
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088558509558388067, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_Name
+      value: Boss 1 Eruption Projectile Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+--- !u!4 &5303733144014541423 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+  m_PrefabInstance: {fileID: 7910397130092457866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8370292497592480188
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5749493958952898097}
+    m_Modifications:
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088558509558388067, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+      propertyPath: m_Name
+      value: Boss 1 Eruption Projectile Variant (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+--- !u!4 &5797405796547431513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2620467672740920805, guid: 2fdc709a88fbd2f4c94cb61e9b1bd83a, type: 3}
+  m_PrefabInstance: {fileID: 8370292497592480188}
+  m_PrefabAsset: {fileID: 0}

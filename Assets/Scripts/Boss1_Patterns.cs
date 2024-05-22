@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -34,32 +35,36 @@ public class Boss1_Patterns : MonoBehaviour
 {
     [Header("Imports")]
 
-    public Rigidbody2D rb;
-    public GameObject fireBall;
-    public GameObject[] pattern1BossWaypoints;
-    public GameObject[] pattern2BossWaypoints;
-    public GameObject[] pattern3BossWaypoints;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject circleWaveProjectile;
+    [SerializeField] GameObject[] pattern1BossWaypoints;
+    [SerializeField] GameObject[] pattern2BossWaypoints;
+    [SerializeField] GameObject[] pattern3BossWaypoints;
 
     [Header("Settings")]
 
-    public float contactDmg;
-    public int currentPattern;
+    [SerializeField] float contactDmg;
+    [SerializeField] [Range(1, 4)] int currentPattern;
 
     [Header("Pattern 1")]
 
-    public float dashCdPattern1;
-    public float dashSpeedPattern1;
-    public float normalSpeedPattern1;
+    [SerializeField] float dashCdPattern1;
+    [SerializeField] float dashSpeedPattern1;
+    [SerializeField] float normalSpeedPattern1;
 
     [Header("Pattern 2")]
 
-    public float dashCdPattern2;
-    public float dashSpeedPattern2;
-    public float normalSpeedPattern2;
+    [SerializeField] GameObject fireBall;
+
+    [SerializeField] float dashCdPattern2;
+    [SerializeField] float dashSpeedPattern2;
+    [SerializeField] float normalSpeedPattern2;
 
     [Header("Pattern 3")]
 
-    public float normalSpeedPattern3;
+    [SerializeField] float normalSpeedPattern3;
+    [SerializeField] float wavesCd;
+    [SerializeField] int baseNbrProjectile;
 
     [Header("Pattern 4")]
 
@@ -68,6 +73,10 @@ public class Boss1_Patterns : MonoBehaviour
     float clock;
     int targetIndex;
     float moveSpeed;
+    private float clockWaves;
+    private int currentWave;
+    private int nbrProjectile;
+    private float clockTrail;
 
     private void Start()
     {
@@ -226,13 +235,24 @@ public class Boss1_Patterns : MonoBehaviour
             float distance = Vector2.Distance(transform.position, pattern2BossWaypoints[targetIndex].transform.position);
             transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoints[targetIndex].transform.position, moveSpeed * Time.deltaTime * distance));
 
-            if ((transform.position.x % 10f > 0f && transform.position.x % 10f < 0.5f) || (transform.position.x % 10f < 0f && transform.position.x % 10f > -0.5f))
+            if (clockTrail <= 0f)
             {
-                if (targetIndex == 1 || targetIndex == 3)
+                clockTrail = 0.2f;
+            }
+
+            if (clockTrail > 0f)
+            {
+                clockTrail -= Time.deltaTime;
+                if (clockTrail < 0f)
                 {
-                Instantiate(fireBall, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
+                    if (targetIndex == 1 || targetIndex == 3)
+                    {
+                    Instantiate(fireBall, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
+                    }
                 }
             }
+
+            
 
             Debug.DrawLine(transform.position, Vector2.MoveTowards(pattern2BossWaypoints[targetIndex].transform.position, transform.position, moveSpeed * Time.deltaTime * distance));
         }
@@ -245,6 +265,24 @@ public class Boss1_Patterns : MonoBehaviour
         {
             float distance = Vector2.Distance(transform.position, pattern3BossWaypoints[targetIndex].transform.position);
             transform.position = (Vector2.MoveTowards(transform.position, pattern3BossWaypoints[targetIndex].transform.position, normalSpeedPattern3 * Time.deltaTime * distance));
+
+            if (clockWaves <= 0f)
+            {
+                clockWaves = wavesCd;
+            }
+
+            if (clockWaves > 0f)
+            {
+                clockWaves -= Time.deltaTime;
+                if (clockWaves < 0f)
+                {
+                    GameObject circleWaveProjectileClone = Instantiate(circleWaveProjectile, transform.position, Quaternion.Euler(0,0,0));
+                    currentWave += 1;
+                    currentWave = currentWave % 3;
+                    nbrProjectile = baseNbrProjectile + currentWave;
+                    circleWaveProjectileClone.GetComponent<CircleWaveProjectile_Behavior>().SetNbrProjectiles(nbrProjectile);
+                }
+            }
 
             Debug.DrawLine(transform.position, Vector2.MoveTowards(pattern3BossWaypoints[targetIndex].transform.position, transform.position, normalSpeedPattern3 * Time.deltaTime * distance));
         }

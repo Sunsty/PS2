@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class Player_Health : MonoBehaviour
@@ -8,14 +9,14 @@ public class Player_Health : MonoBehaviour
 
     [Header("Imports")]
 
-    public GameObject player;
-    public Image healthBar;
+    [SerializeField] GameObject player;
+    [SerializeField] Image healthBar;
 
     [Header("Settings")]
 
-    public float maxHealth;
-    public float regenAmount;
-    public float iFramesAmount;
+    [SerializeField] float maxHealth;
+    [SerializeField] float regenAmount;
+    [SerializeField] float iFramesAmount;
 
     [Header("")]
 
@@ -23,10 +24,12 @@ public class Player_Health : MonoBehaviour
     float clockRegen;
     float counterIFrames;
     bool canTakeDmg = true;
-    private bool tookDmg;
+    bool tookDmg;
+    private SpriteRenderer sprite;
 
     private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         health = maxHealth;
     }
 
@@ -52,6 +55,15 @@ public class Player_Health : MonoBehaviour
         if (counterIFrames > 0f)
         {
             counterIFrames -= Time.deltaTime;
+
+            if (counterIFrames % 0.3f >= 0.15f)
+            {
+                sprite.color = new Color(255, 255, 255, 0);
+            }
+            else
+            {
+                sprite.color = new Color(255, 255, 255, 255);
+            }
 
             if (counterIFrames < 0f)
             {

@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class BossProjectile_Behavior : MonoBehaviour
 {
-    public float lifeSpan;
+    [SerializeField] GameObject eruption;
+
+    [SerializeField] bool additionalBehaviorEruption;
+
+    [SerializeField] float projectileDmg;
+    [SerializeField] float lifeSpan;
     float clock;
+
     private void Awake()
     {
         clock = lifeSpan;
@@ -22,6 +28,22 @@ public class BossProjectile_Behavior : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player_Health>().TakeDamage(projectileDmg);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Environment")
+        {
+            Instantiate(eruption, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

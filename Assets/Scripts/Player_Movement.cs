@@ -45,36 +45,34 @@ public class Player_Movement : MonoBehaviour
 
     [Header("Imports")]
 
-    public Rigidbody2D rb;
-    public Transform groundCheckLeft;
-    public Transform groundCheckRight;
-    public Image fuelBar;
-    public SpriteRenderer sprite;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Transform groundCheckLeft;
+    [SerializeField] Transform groundCheckRight;
+    [SerializeField] Image fuelBar;
+    [SerializeField] SpriteRenderer sprite;
 
     [Header("Settings")]
 
-    public float maxVelocity;
-    public float acceleration;
-    public float jumpspeed;
-    public float flyTimeOffset;
-    public float flySpeed;
-    public float dashLenght;
-    public float dashForce;
-    public float maxVelocityX;
-    public float maxVelocityY;
-    public float maxFlyingFuel;
-    public float downLenght;
-    public float glideCoef;
-    public float dashCooldown;
+    [SerializeField] float maxVelocity;
+    [SerializeField] float acceleration;
+    [SerializeField] float jumpspeed;
+    [SerializeField] float flyTimeOffset;
+    [SerializeField] float flySpeed;
+    [SerializeField] float dashLenght;
+    [SerializeField] float dashForce;
+    [SerializeField] float maxVelocityX;
+    [SerializeField] float maxVelocityY;
+    [SerializeField] float maxFlyingFuel;
+    [SerializeField] float downLenght;
+    [SerializeField] float glideCoef;
+    [SerializeField] float dashCooldown;
 
     [Header("")]
 
     float dirX;
     bool isJumping;
     float maxSpeed;
-
     bool isGrounded;
-
     bool wantsJumping;
     Vector2 jumpDir;
     bool wantsFlying;
@@ -98,6 +96,7 @@ public class Player_Movement : MonoBehaviour
     private bool hasDashCd = true;
     private bool hasDashed;
     private float dashCdCounter;
+
 
     private void FixedUpdate()
     {
