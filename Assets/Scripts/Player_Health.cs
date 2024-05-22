@@ -15,11 +15,15 @@ public class Player_Health : MonoBehaviour
 
     public float maxHealth;
     public float regenAmount;
+    public float iFramesAmount;
 
     [Header("")]
 
     float health;
-    float time;
+    float clockRegen;
+    float counterIFrames;
+    bool canTakeDmg = true;
+    private bool tookDmg;
 
     private void Start()
     {
@@ -28,24 +32,44 @@ public class Player_Health : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.O))
+        ////////////////////////////////////////////////////////////
+        
+        if (!canTakeDmg)
         {
-            TakeDamage(10f);
+            tookDmg = true;
         }
 
+        if (tookDmg)
+        {
+            if (counterIFrames <= 0f)
+            {
+                counterIFrames = iFramesAmount;
+            }
 
+            tookDmg = false;
+        }
+
+        if (counterIFrames > 0f)
+        {
+            counterIFrames -= Time.deltaTime;
+
+            if (counterIFrames < 0f)
+            {
+                canTakeDmg = true;
+            }
+        }
 
         ////////////////////////////////////////////////////////////
 
-        if (time <= 0f)
+        if (clockRegen <= 0f)
         {
-            time = 5f;
+            clockRegen = 5f;
         }
 
-        if (time > 0f)
+        if (clockRegen > 0f)
         {
-        time -= Time.deltaTime;
-            if (time < 0f)
+        clockRegen -= Time.deltaTime;
+            if (clockRegen < 0f)
             {
                 health += regenAmount;
             }
@@ -71,6 +95,10 @@ public class Player_Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        if (canTakeDmg)
+        {
+            health -= damage;
+            canTakeDmg = false;
+        }
     }
 }

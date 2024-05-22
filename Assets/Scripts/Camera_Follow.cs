@@ -7,22 +7,46 @@ public class Camera_Follow : MonoBehaviour
     public GameObject player;
     public GameObject boss;
 
-    public float timeOffset;
-    public Vector3 posOffset;
+    float timeOffset;
+    Vector3 posOffset;
+    Vector3 velocity;
+    Vector3 target;
+    public int cameraBehavior = 1;
 
-    private Vector3 velocity;
-    private Vector3 target;
-    private int cameraBehavior = 1;
+    [Header("Camera 1")]
+
+    public float timeOffset1;
+    public Vector3 posOffset1;
+
+    [Header("Camera 2")]
+
+    public float timeOffset2;
+    public Vector3 posOffset2;
+
+    [Header("Camera 3")]
+
+    public float timeOffset3;
+    public Vector3 posOffset3;
 
     void Update()
     {
         if (cameraBehavior == 1)
         {
             target = (player.transform.position + boss.transform.position) / 2f;
+            timeOffset = timeOffset1;
+            posOffset = posOffset1;
         }
         else if (cameraBehavior == 2)
         {
             target = player.transform.position;
+            timeOffset = timeOffset2;
+            posOffset = posOffset2;
+        }
+        else if (cameraBehavior == 3)
+        {
+            target = boss.transform.position;
+            timeOffset = timeOffset3;
+            posOffset = posOffset3;
         }
         transform.position = Vector3.SmoothDamp(transform.position, target + posOffset, ref velocity, timeOffset);
     }
