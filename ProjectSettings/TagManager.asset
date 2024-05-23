@@ -7,6 +7,9 @@ TagManager:
   - OW Platform
   - Boss
   - Environment
+  - Boss 1 Pattern 1 Waypoint
+  - Boss 1 Pattern 2 Waypoint
+  - Boss Bar
   layers:
   - Default
   - TransparentFX

@@ -4,17 +4,36 @@ using UnityEngine;
 
 public class BossProjectile_Behavior : MonoBehaviour
 {
-    [SerializeField] GameObject eruption;
+    [Header("Imports")]
+
+    [SerializeField] GameObject player;
+
+
+    [Header("Additionnal Behavior")]
 
     [SerializeField] bool additionalBehaviorEruption;
+    [SerializeField] GameObject eruption;
+
+    [Header("Settings")]
 
     [SerializeField] float projectileDmg;
     [SerializeField] float lifeSpan;
+
     float clock;
+    GameObject[] oWPlatorms;
+
+
 
     private void Awake()
     {
         clock = lifeSpan;
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        oWPlatorms = GameObject.FindGameObjectsWithTag("OW Platform");
+        foreach (var item in oWPlatorms)
+        {
+            Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
     }
 
     private void Update()

@@ -53,7 +53,6 @@ public class Player_Movement : MonoBehaviour
 
     [Header("Settings")]
 
-    [SerializeField] float maxVelocity;
     [SerializeField] float acceleration;
     [SerializeField] float jumpspeed;
     [SerializeField] float flyTimeOffset;

@@ -28,8 +28,14 @@ public class Camera_Follow : MonoBehaviour
     public float timeOffset3;
     public Vector3 posOffset3;
 
+
+
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        boss = GameObject.FindGameObjectWithTag("Boss");
+
+
         if (cameraBehavior == 1)
         {
             target = (player.transform.position + boss.transform.position) / 2f;

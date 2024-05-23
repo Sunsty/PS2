@@ -8,8 +8,7 @@ public class Boss_Health : MonoBehaviour
     [Header("Imports")]
 
     public GameObject boss;
-    public Image healthBar;
-    public GameObject mainCamera;
+
 
     [Header("Settings")]
 
@@ -18,10 +17,14 @@ public class Boss_Health : MonoBehaviour
     [Header("")]
 
     float health;
+    Image healthBar;
+    GameObject mainCamera;
 
     private void Start()
     {
         health = maxHealth;
+        healthBar = GameObject.FindGameObjectWithTag("Boss Bar").GetComponentInChildren<Image>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     private void Update()

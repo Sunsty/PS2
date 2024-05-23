@@ -19,15 +19,12 @@ public class Eruption_Behavior : MonoBehaviour
         {
             for (int i = 0; i <= eruptionHeight; i++)
             {
-                Debug.Log(i);
-
                 StartCoroutine(Waiter(i));            
                 if (i == eruptionHeight)
                 {
                     StartCoroutine(DestroyEnd(eruptionHeight));
                 }
             }
-
             erupt = false;
         }
     }
