@@ -13,6 +13,7 @@ public class AimTarget_Behavior : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float idleDuration;
+    [SerializeField] float contactDmg;
 
     [Header("Private")]
 
@@ -47,6 +48,16 @@ public class AimTarget_Behavior : MonoBehaviour
                 float distance = Vector2.Distance(transform.position, player.transform.position);
                 transform.position = (Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime));
             }
+        }
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player_Health>().TakeDamage(contactDmg);
         }
     }
 }

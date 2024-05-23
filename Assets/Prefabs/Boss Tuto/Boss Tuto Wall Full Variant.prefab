@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Tuto Wall Full Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3512611001439313557, guid: 43673d5101acbcf4f82dd3212d66665c, type: 3}
+      propertyPath: m_TagString
+      value: Boss Tuto Pattern 3 Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8770722966125325084, guid: 43673d5101acbcf4f82dd3212d66665c, type: 3}
       propertyPath: height
       value: 40

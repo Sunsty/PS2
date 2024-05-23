@@ -54,6 +54,13 @@ public class Projectile_Behavior : MonoBehaviour
             collision.gameObject.GetComponent<Boss_Health>().TakeDamage(projectileDmg);
             Destroy(gameObject);
         }
+
+
+        if (collision.CompareTag("Aim Target"))
+        {
+            collision.gameObject.GetComponent<AimTarget_Health>().TakeDamage(projectileDmg);
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

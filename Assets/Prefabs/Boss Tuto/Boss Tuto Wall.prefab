@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2081474233831243755}
   m_Layer: 0
   m_Name: Boss Tuto Wall
-  m_TagString: Untagged
+  m_TagString: Boss Tuto Pattern 1 Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5742749590001999901, guid: bd727d464a123e74f8902b0f1075a12e, type: 3}
   endWaypoint: {fileID: 5231106978976263763}
-  speed: 0.2
+  speed: 0.1
   duration: 0
   height: 22
   invert: 0

@@ -12,6 +12,8 @@ TagManager:
   - Boss Bar
   - Aim Target Waypoint
   - Aim Target
+  - Boss Tuto Pattern 1 Wall
+  - Boss Tuto Pattern 3 Wall
   layers:
   - Default
   - TransparentFX

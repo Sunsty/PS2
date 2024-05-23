@@ -29,11 +29,11 @@ public class BossTuto_Patterns : MonoBehaviour
 {
     [Header("Imports")]
 
-    [SerializeField] GameObject boss;
+    [SerializeField] GameObject mainCamera;
 
     [Header("Settings")]
 
-    [SerializeField, Range(1, 3)] int currentPattern;
+    [SerializeField, Range(1, 7)] int currentPattern;
 
     [Header("Pattern 1")]
 
@@ -45,6 +45,7 @@ public class BossTuto_Patterns : MonoBehaviour
     [SerializeField] int maxWallCountPattern1;
 
     int wallCountPattern1;
+    GameObject[] activeWallsPattern1;
 
     [Header("Pattern 2")]
 
@@ -73,6 +74,7 @@ public class BossTuto_Patterns : MonoBehaviour
     [SerializeField] int maxWallCountPattern3;
 
     int wallCountPattern3;
+    GameObject[] activeWallsPattern3;
 
     [Header("Private")]
 
@@ -95,10 +97,28 @@ public class BossTuto_Patterns : MonoBehaviour
 
     private void Update()
     {
-        ///////////////////// - Pattern 1 - /////////////////////
+        currentPattern = currentPattern % 8;
+
+        ///////////////////// - Pattern Cine 1 - /////////////////////
 
         if (currentPattern == 1)
         {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentPattern++;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
+
+        ///////////////////// - Pattern 1 - /////////////////////
+
+        if (currentPattern == 2)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+
             if (clock <= 0)
             {
                 clock = wallOffsetPattern1;
@@ -110,21 +130,26 @@ public class BossTuto_Patterns : MonoBehaviour
 
                 if (clock < 0)
                 {
-                    if (wallCountPattern1 % 2 == 0)
-                    {
-                        Instantiate(wallDown, transform.position + new Vector3(0, upOffset, 0), Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(wallUp, transform.position - new Vector3(0, downOffset, 0), Quaternion.identity);
-                    }
                     wallCountPattern1++;
+                    if (wallCountPattern1 <= maxWallCountPattern1)
+                    {
+                        if (wallCountPattern1 % 2 == 0)
+                        {
+                            Instantiate(wallDown, transform.position + new Vector3(0, upOffset, 0), Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(wallUp, transform.position - new Vector3(0, downOffset, 0), Quaternion.identity);
+                        }
+                    }
                 }
             }
 
-            if (wallCountPattern1 >= maxWallCountPattern1)
+            activeWallsPattern1 = GameObject.FindGameObjectsWithTag("Boss Tuto Pattern 1 Wall");
+
+            if (wallCountPattern1 >= maxWallCountPattern1 && activeWallsPattern1.Length == 0)
             {
-                currentPattern = 2;
+                currentPattern++;
                 clock = 0;
                 wallCountPattern1 = 0;
             }
@@ -132,34 +157,66 @@ public class BossTuto_Patterns : MonoBehaviour
 
         /////////////////////////////////////////////////////////
 
+        ///////////////////// - Pattern Cine 2 - /////////////////////
+
+        if (currentPattern == 3)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentPattern++;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
+
         ///////////////////// - Pattern 2 - /////////////////////
 
-        if (currentPattern == 2)
+        if (currentPattern == 4)
         {
-            activeAimTargets = GameObject.FindGameObjectsWithTag("Aim Target");
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
 
-
-
-            if (activeAimTargets.Length <= 0)
+            if (activeAimTargets.Length == 0)
             {            
-                Debug.Log("###");
-
                 foreach (var waypointIndex in spawnPatterns[wavesCount])
                 {
                     Instantiate(aimTarget, aimTargetWaypoints[waypointIndex].transform.position, Quaternion.identity);
                 }
                 
-
                 wavesCount++;
+            }
+
+            activeAimTargets = GameObject.FindGameObjectsWithTag("Aim Target");
+
+            if (wavesCount >= maxWavesCount && activeAimTargets.Length == 0)
+            {            
+                currentPattern++;
             }
         }
 
         /////////////////////////////////////////////////////////
 
+        ///////////////////// - Pattern Cine 3 - /////////////////////
+
+        if (currentPattern == 5)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentPattern++;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
+
         ///////////////////// - Pattern 3 - /////////////////////
 
-        if (currentPattern == 3)
+        if (currentPattern == 6)
         {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+
             if (clock <= 0)
             {
                 clock = wallOffsetPattern3;
@@ -172,18 +229,37 @@ public class BossTuto_Patterns : MonoBehaviour
                 if (clock < 0)
                 {
                     wallCountPattern3++;
+                    if (wallCountPattern3 <= maxWallCountPattern3)
+                    {
                     Instantiate(wallFull, transform.position - new Vector3(0, fullOffset, 0), Quaternion.identity);
+                    }
                 }
             }
 
-            if (wallCountPattern3 >= maxWallCountPattern3)
+            activeWallsPattern3 = GameObject.FindGameObjectsWithTag("Boss Tuto Pattern 3 Wall");
+
+            if (wallCountPattern3 >= maxWallCountPattern3 && activeWallsPattern3.Length == 0)
             {
-                currentPattern = 1;
+                currentPattern++;
                 clock = 0;
                 wallCountPattern3 = 0;
             }
         }
 
         /////////////////////////////////////////////////////////
+
+        //////////////////// - Pattern Cine End - ////////////////////
+
+        if (currentPattern == 7)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentPattern++;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
     }
 }
