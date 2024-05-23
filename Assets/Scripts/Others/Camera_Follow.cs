@@ -11,7 +11,7 @@ public class Camera_Follow : MonoBehaviour
     Vector3 posOffset;
     Vector3 velocity;
     Vector3 target;
-    public int cameraBehavior = 1;
+    [SerializeField, Range(1,3)] int cameraBehavior;
 
     [Header("Camera 1")]
 

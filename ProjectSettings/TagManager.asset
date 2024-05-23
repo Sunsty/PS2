@@ -10,6 +10,8 @@ TagManager:
   - Boss 1 Pattern 1 Waypoint
   - Boss 1 Pattern 2 Waypoint
   - Boss Bar
+  - Aim Target Waypoint
+  - Aim Target
   layers:
   - Default
   - TransparentFX

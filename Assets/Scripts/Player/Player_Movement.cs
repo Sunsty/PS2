@@ -50,6 +50,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] Transform groundCheckRight;
     [SerializeField] Image fuelBar;
     [SerializeField] SpriteRenderer sprite;
+    [SerializeField] Player_Health player_Health;
 
     [Header("Settings")]
 
@@ -158,6 +159,8 @@ public class Player_Movement : MonoBehaviour
             {
                 tempForce = -dashForce;
             }
+
+            player_Health.InitDash(dashLenght);
 
             isDashing = false;
             canDash = false;
