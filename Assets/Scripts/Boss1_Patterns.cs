@@ -232,8 +232,15 @@ public class Boss1_Patterns : MonoBehaviour
 
         if (currentPattern == 2)
         {
-            float distance = Vector2.Distance(transform.position, pattern2BossWaypoints[targetIndex].transform.position);
-            transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoints[targetIndex].transform.position, moveSpeed * Time.deltaTime * distance));
+            if (targetIndex == 0 || targetIndex == 2)
+            {
+                float distance = Vector2.Distance(transform.position, pattern2BossWaypoints[targetIndex].transform.position);
+                transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoints[targetIndex].transform.position, moveSpeed * Time.deltaTime * distance));
+            }
+            else if (targetIndex == 1 || targetIndex == 3)
+            {
+                transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoints[targetIndex].transform.position, moveSpeed * Time.deltaTime * 70f));
+            }
 
             if (clockTrail <= 0f)
             {
@@ -254,7 +261,6 @@ public class Boss1_Patterns : MonoBehaviour
 
             
 
-            Debug.DrawLine(transform.position, Vector2.MoveTowards(pattern2BossWaypoints[targetIndex].transform.position, transform.position, moveSpeed * Time.deltaTime * distance));
         }
 
         /////////////////////////////////////////////////////////
