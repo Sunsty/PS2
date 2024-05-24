@@ -186,8 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778aed11659b3e94eb99ad2afe0585e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  speed: 0
+  player: {fileID: 0}
+  mainCamera: {fileID: 0}
+  currentPattern: 1
+  speedPattern1: 40
+  orbitRange: 55
+  shootCdPattern1: 1
 --- !u!1001 &1428033090560850307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,5 +282,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d1d80345744f84d817bd93ca75ab19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 7602745940414632123}
+  bossBar: {fileID: 0}
+  mainCamera: {fileID: 0}
   speed: 0
+  currentPattern: 1
+  pattern1BossWaypoints: []
+  dashCdPattern1: 1.5
+  dashSpeed: 4
+  maxPattern1Count: 1000
+--- !u!50 &7602745940414632123 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8814395086714759480, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+  m_PrefabInstance: {fileID: 1428033090560850307}
+  m_PrefabAsset: {fileID: 0}
