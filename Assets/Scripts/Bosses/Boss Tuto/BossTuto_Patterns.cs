@@ -30,10 +30,11 @@ public class BossTuto_Patterns : MonoBehaviour
     [Header("Imports")]
 
     [SerializeField] GameObject mainCamera;
+    [SerializeField] GameObject bossBar;
 
     [Header("Settings")]
 
-    [SerializeField, Range(1, 7)] int currentPattern;
+    [SerializeField, Range(1, 8)] int currentPattern;
 
     [Header("Pattern 1")]
 
@@ -83,6 +84,11 @@ public class BossTuto_Patterns : MonoBehaviour
 
     private void Start()
     {
+        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
+
+        bossBar.SetActive(false);
+
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         aimTargetWaypoints = GameObject.FindGameObjectsWithTag("Aim Target Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         spawnPatterns = new List<int>[6];
 
@@ -256,7 +262,8 @@ public class BossTuto_Patterns : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                currentPattern++;
+                mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+                this.enabled = false;
             }
         }
 

@@ -174,4 +174,4 @@ MonoBehaviour:
   player: {fileID: 0}
   oWPlatorms: []
   travelLenght: 20
-  projectileDmg: 10
+  projectileDmg: 50

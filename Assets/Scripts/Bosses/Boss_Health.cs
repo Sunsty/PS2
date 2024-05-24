@@ -7,12 +7,11 @@ public class Boss_Health : MonoBehaviour
 {
     [Header("Imports")]
 
-    public GameObject boss;
-
+    [SerializeField] GameObject bossBar;
 
     [Header("Settings")]
 
-    public float maxHealth;
+    [SerializeField] float maxHealth;
 
     [Header("")]
 
@@ -25,6 +24,7 @@ public class Boss_Health : MonoBehaviour
         health = maxHealth;
         healthBar = GameObject.FindGameObjectWithTag("Boss Bar").GetComponentInChildren<Image>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
     }
 
     private void Update()
@@ -41,7 +41,8 @@ public class Boss_Health : MonoBehaviour
             health = 0f;
             Debug.Log("Congrats !");
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
-            Destroy(boss);
+            bossBar.SetActive(false);
+            Destroy(gameObject);
         }
 
         ////////////////////////////////////////////////////////////
@@ -52,5 +53,10 @@ public class Boss_Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+    }
+
+    public float GetHealth()
+    {
+        return health;
     }
 }

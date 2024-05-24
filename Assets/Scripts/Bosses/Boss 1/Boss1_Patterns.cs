@@ -31,24 +31,23 @@ using UnityEngine;
 /// ///////////////////////////////////////////////////////////////////////
 /// 
 /// </summary>
-/// 
+ 
 public class Boss1_Patterns : MonoBehaviour
 {
     [Header("Imports")]
 
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] GameObject circleWaveProjectile;
-    [SerializeField] GameObject[] pattern1BossWaypoints;
-    [SerializeField] GameObject[] pattern2BossWaypoints;
-    [SerializeField] GameObject pattern3BossWaypoint;
-    [SerializeField] GameObject cinematicBossWaypoint;
+    [SerializeField] GameObject mainCamera;
+    [SerializeField] GameObject bossBar;
 
     [Header("Settings")]
 
     [SerializeField] float contactDmg;
-    [SerializeField] [Range(1, 4)] int currentPattern;
+    [SerializeField] [Range(0, 4)] int currentPattern;
 
     [Header("Pattern 1")]
+
+    [SerializeField] GameObject[] pattern1BossWaypoints;
 
     [SerializeField] float dashCdPattern1;
     [SerializeField] float dashSpeedPattern1;
@@ -60,6 +59,7 @@ public class Boss1_Patterns : MonoBehaviour
     [Header("Pattern 2")]
 
     [SerializeField] GameObject fireBall;
+    [SerializeField] GameObject[] pattern2BossWaypoints;
 
     [SerializeField] float dashCdPattern2;
     [SerializeField] float dashSpeedPattern2;
@@ -70,6 +70,9 @@ public class Boss1_Patterns : MonoBehaviour
 
     [Header("Pattern 3")]
 
+    [SerializeField] GameObject circleWaveProjectile;
+    [SerializeField] GameObject pattern3BossWaypoint;
+
     [SerializeField] float normalSpeedPattern3;
     [SerializeField] float wavesCd;
     [SerializeField] int baseNbrProjectile;
@@ -78,6 +81,29 @@ public class Boss1_Patterns : MonoBehaviour
     int pattern3Count;
 
     [Header("Pattern 4")]
+
+    [SerializeField] GameObject cinematicBossWaypoint;
+
+    [SerializeField] float secondPhaseHealth;
+
+    [Header("Enraged Stats")]
+
+    [SerializeField] float dashCdPattern1Enraged;
+    [SerializeField] float dashSpeedPattern1Enraged;
+    [SerializeField] float normalSpeedPattern1Enraged;
+    [SerializeField] int maxPattern1CountEnraged;
+
+    [SerializeField, Space(10)] float dashCdPattern2Enraged;
+    [SerializeField] float dashSpeedPattern2Enraged;
+    [SerializeField] float normalSpeedPattern2Enraged;
+    [SerializeField] int maxPattern2CountEnraged;
+
+    [SerializeField, Space(10)] float normalSpeedPattern3Enraged;
+    [SerializeField] float wavesCdEnraged;
+    [SerializeField] int baseNbrProjectileEnraged;
+    [SerializeField] float pattern3DurationEnraged;
+
+    bool enraged;
 
     [Header("Private")]
 
@@ -94,16 +120,33 @@ public class Boss1_Patterns : MonoBehaviour
     {
         pattern1BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 1 Pattern 1 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         pattern2BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 1 Pattern 2 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
-
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
     }
 
 
     private void FixedUpdate()
     {
+        ///////////////////// - Pattern 0 - /////////////////////
+
+        if (currentPattern == 0)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentPattern = 1;
+            }
+        }
+
         ///////////////////// - Pattern 1 - /////////////////////
 
         if (currentPattern == 1)
         {
+            bossBar.SetActive(true);
+
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
+
             if (clock <= 0)
             {
                 clock = dashCdPattern1;
@@ -142,7 +185,7 @@ public class Boss1_Patterns : MonoBehaviour
             {
                 currentPattern = 2;
                 clock = 0f;
-                pattern2Count = 0;
+                pattern1Count = 0;
                 targetIndex = 0;
             }
         }
@@ -153,6 +196,8 @@ public class Boss1_Patterns : MonoBehaviour
 
         if (currentPattern == 2)
         {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
+
             if (clock <= 0)
             {
                 clock = dashCdPattern1;
@@ -192,6 +237,7 @@ public class Boss1_Patterns : MonoBehaviour
                 currentPattern = 3;
                 clock = 0f;
                 targetIndex = 0;
+                pattern2Count = 0;
             }
         }
 
@@ -201,6 +247,8 @@ public class Boss1_Patterns : MonoBehaviour
 
         if (currentPattern == 3)
         {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
+
             if (clock <= 0)
             {
                 clock = pattern3Duration;
@@ -212,21 +260,28 @@ public class Boss1_Patterns : MonoBehaviour
 
                 if (clock < 0)
                 {
+                    clockWaves = 0f;
                     currentPattern = 1;
                     clock = 0f;
-                    pattern1Count = 0;
-                    targetIndex = 0;
                 }
             }
         }
 
         /////////////////////////////////////////////////////////
-        
+
+        float health = gameObject.GetComponent<Boss_Health>().GetHealth();
+
+        if (health <= secondPhaseHealth && !enraged)
+        {
+            currentPattern = 4;
+            enraged = true;
+        }
+
         ///////////////////// - Pattern 4 - /////////////////////
 
         if (currentPattern == 4)
         {
-
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
         }
 
         /////////////////////////////////////////////////////////
@@ -234,35 +289,6 @@ public class Boss1_Patterns : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            currentPattern += 1;
-            currentPattern = currentPattern % 5;
-
-            if (currentPattern == 0)
-            {
-                currentPattern = 1;
-            }
-            if (currentPattern == 1)
-            {
-                targetIndex = 0;
-                clock = 0;
-            }
-            if (currentPattern == 2)
-            {
-                targetIndex = 0;
-                clock = 0;
-            }
-            if (currentPattern == 3)
-            {
-                targetIndex = 0;
-            }
-            if (currentPattern == 4)
-            {
-                targetIndex = 0;
-            }
-        }
 
         ///////////////////// - Pattern 1 - /////////////////////
 
@@ -346,11 +372,32 @@ public class Boss1_Patterns : MonoBehaviour
         {
             float distance = Vector2.Distance(transform.position, cinematicBossWaypoint.transform.position);
             transform.position = (Vector2.MoveTowards(transform.position, cinematicBossWaypoint.transform.position, normalSpeedPattern3 * Time.deltaTime * distance));
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentPattern = 1;
+                clock = 0f;
+            }
         }
 
         /////////////////////////////////////////////////////////
 
- 
+        if (enraged)
+        {
+            dashCdPattern1 = dashCdPattern1Enraged;
+            dashSpeedPattern1 = dashSpeedPattern1Enraged;
+            maxPattern1Count = maxPattern1CountEnraged;
+
+            dashCdPattern2 = dashCdPattern2Enraged;
+            dashSpeedPattern2 = dashSpeedPattern2Enraged;
+            normalSpeedPattern2 = normalSpeedPattern2Enraged;
+            maxPattern2Count = maxPattern2CountEnraged;
+
+            normalSpeedPattern3 = normalSpeedPattern3Enraged;
+            wavesCd = wavesCdEnraged;
+            baseNbrProjectile = baseNbrProjectileEnraged;
+            pattern3Duration = pattern3DurationEnraged;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
