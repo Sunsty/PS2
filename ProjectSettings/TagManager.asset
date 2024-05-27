@@ -16,6 +16,9 @@ TagManager:
   - Boss Tuto Pattern 3 Wall
   - Boss 2 Melee Pattern 1 Waypoint
   - Shield
+  - Boss 2 Melee Pattern 3 Waypoint
+  - Camera Shake
+  - Boss 2 Range Pattern 3 Waypoint
   layers:
   - Default
   - TransparentFX

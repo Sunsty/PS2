@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
@@ -32,10 +33,12 @@ public class Boss2Range_Patterns : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject bossBar;
+    [SerializeField] GameObject meleeBoss;
+
 
     [Header("Settings"), Space(10)]
 
-    [SerializeField, Range(1,3)] public int currentPattern;
+    [SerializeField, Range(1,4)] public int currentPattern;
 
     [Header("Pattern 1"), Space(10)]
 
@@ -51,47 +54,42 @@ public class Boss2Range_Patterns : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] float maxPattern2Duration;
     [SerializeField] float pattern2Speed;
 
     bool startPattern2;
+    GameObject wheelClone;
 
     [Header("Pattern 3"), Space(10)]
 
+    [SerializeField] GameObject[] pattern3BossWaypoints;
+    [SerializeField] float pattern3Speed;
+    [SerializeField] int maxPattern3Count;
 
+    int pattern3Count;
+    int targetIndex;
 
     [Header("Private"), Space(10)]
 
-    float clock;
+    [HideInInspector] public float clock;
 
     private void Start()
     {
+        pattern3BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 2 Range Pattern 3 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         player = GameObject.FindGameObjectWithTag("Player");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
     }
 
-    private void FixedUpdate()
-    {
-        ///////////////////// - Pattern 1 - /////////////////////
-
-
-        /////////////////////////////////////////////////////////
-
-        ///////////////////// - Pattern 2 - /////////////////////
-
-
-
-        /////////////////////////////////////////////////////////
-
-        ///////////////////// - Pattern 3 - /////////////////////
-
-
-
-        /////////////////////////////////////////////////////////
-    }
-
     private void Update()
     {
+        currentPattern %= 4;
+
+        if (currentPattern == 0)
+        {
+            currentPattern = 1;
+        }
+
         ///////////////////// - Pattern 1 - /////////////////////
 
         if (currentPattern == 1)
@@ -130,20 +128,77 @@ public class Boss2Range_Patterns : MonoBehaviour
 
             if (!startPattern2 && Vector2.Distance(transform.position, pattern2BossWaypoint.transform.position) <= 0.1f)
             {
-                GameObject wheelClone = Instantiate(wheel, transform.position, Quaternion.identity);
+                wheelClone = Instantiate(wheel, transform.position, Quaternion.identity);
                 startPattern2 = true;
             }
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
             float distance = Vector2.Distance(transform.position, pattern2BossWaypoint.transform.position);
             transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoint.transform.position, pattern2Speed * Time.deltaTime * distance));
+
+            if (clock <= 0f)
+            {
+                clock = maxPattern2Duration;
+            }
+
+            if (clock > 0f)
+            {
+                clock -= Time.deltaTime;
+
+                if (clock < 0f)
+                {
+                    startPattern2 = false;
+                    Destroy(wheelClone);
+                    currentPattern++;
+                    meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 3;
+                    meleeBoss.GetComponent<Boss2Melee_Patterns>().clock = 0f;
+                }
+            }
         }
 
         /////////////////////////////////////////////////////////
 
         ///////////////////// - Pattern 3 - /////////////////////
 
+        if (currentPattern == 3)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
 
+            if (targetIndex == 1 || targetIndex == 3)
+            {
+                transform.position = (Vector2.MoveTowards(transform.position, pattern3BossWaypoints[targetIndex].transform.position, pattern3Speed * Time.deltaTime));
+            }
+            else if(targetIndex == 0)
+            {
+                transform.position = pattern3BossWaypoints[0].transform.position;
+                targetIndex++;
+            }
+            else if (targetIndex == 2)
+            {
+                transform.position = pattern3BossWaypoints[2].transform.position;
+                targetIndex++;
+            }
+
+
+            if ((Vector2.Distance(transform.position, pattern3BossWaypoints[1].transform.position) <= .1f && targetIndex == 1) || (Vector2.Distance(transform.position, pattern3BossWaypoints[3].transform.position) <= .1f && targetIndex == 3))
+            {
+                pattern3Count++;
+                targetIndex++;
+                targetIndex %= 4;
+                transform.position = pattern3BossWaypoints[targetIndex].transform.position;
+            }
+
+            if (pattern3Count == maxPattern3Count)
+            {
+                currentPattern++;
+                clock = 0f;
+                pattern3Count = 0;
+                targetIndex = 0;
+                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 4;
+                meleeBoss.GetComponent<Boss2Melee_Patterns>().clock = 0f;
+            }
+
+        }
 
         /////////////////////////////////////////////////////////
     }

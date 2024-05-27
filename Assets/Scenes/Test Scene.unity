@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 50775131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.4, y: -1.6, z: 0}
+  m_LocalPosition: {x: -25.9, y: 0.4, z: 0}
   m_LocalScale: {x: 0.8994, y: 1.3420694, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -428,7 +428,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 4
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -478,6 +478,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1993367450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &130328641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 122816095661613518, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+  m_PrefabInstance: {fileID: 574306992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &141768486
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +495,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 7
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -539,6 +544,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2039812916}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &154546049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154546050}
+  m_Layer: 0
+  m_Name: Camera Shake
+  m_TagString: Camera Shake
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &154546050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154546049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 519420032}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &182456140
 GameObject:
@@ -647,6 +684,37 @@ RectTransform:
   m_AnchoredPosition: {x: -759, y: 371}
   m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &376752609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376752610}
+  m_Layer: 0
+  m_Name: Boss waypoint 2
+  m_TagString: Boss 2 Melee Pattern 3 Waypoint
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376752610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376752609}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1, y: 8.75, z: 0}
+  m_LocalScale: {x: 1.9250001, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1238235188}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &392484847
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,12 +1026,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 154546050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -996,6 +1064,46 @@ MonoBehaviour:
   timeOffset5: 0.2
   posOffset5: {x: 0, y: 13.77, z: -10}
   cameraSize5: 25.5
+--- !u!1 &529768887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6881683044396500819, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+  m_PrefabInstance: {fileID: 574306992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &529768893
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529768887}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000000060846066, y: -0.49}
+  m_Size: {x: 0.05043007, y: 0.007085684}
+  m_Direction: 1
 --- !u!1 &545077296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,13 +1144,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 50775131}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: bossBar
+      value: 
+      objectReference: {fileID: 754743146}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 519420028}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: pattern3Cd
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
-      propertyPath: currentPattern
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: pattern3BossWaypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 695272762}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: pattern3BossWaypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1457447860}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: pattern3BossWaypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1712566227}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: pattern3BossWaypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 130328641}
     - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.342873
@@ -1088,21 +1220,24 @@ PrefabInstance:
       value: Boss 2
       objectReference: {fileID: 0}
     - target: {fileID: 5046870486594682499, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 154546049}
+    - target: {fileID: 7384943168256770892, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Name
+      value: Pattern 2 Boss Waypoint
       objectReference: {fileID: 0}
-    - target: {fileID: 5046870486594682499, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
-      propertyPath: currentPattern
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046870486594682499, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
-      propertyPath: maxPattern1Count
-      value: 5
+    - target: {fileID: 7602745940414632123, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6881683044396500819, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 529768893}
   m_SourcePrefab: {fileID: 100100000, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
 --- !u!1 &643714577
 GameObject:
@@ -1220,7 +1355,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 3
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1270,6 +1405,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 50775136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &695272762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8475119788847149541, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+  m_PrefabInstance: {fileID: 574306992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &754743146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1574,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 5
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1465,7 +1605,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 8
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1522,6 +1662,37 @@ RectTransform:
   m_AnchoredPosition: {x: -1, y: -75}
   m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1111861275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111861276}
+  m_Layer: 0
+  m_Name: Boss waypoint 1
+  m_TagString: Boss 2 Melee Pattern 3 Waypoint
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1111861276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111861275}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 8.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1238235188}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1149612853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,6 +1768,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149612853}
   m_CullTransparentMesh: 1
+--- !u!1 &1238235187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238235188}
+  m_Layer: 0
+  m_Name: Boss 2 Pattern 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1238235188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238235187}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.3, z: 0}
+  m_LocalScale: {x: 4.1346025, y: 4.1346025, z: 4.1346025}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1111861276}
+  - {fileID: 376752610}
+  m_Father: {fileID: 1712390786}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243524177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1907,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 50775136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1457447860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2228111843185941707, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+  m_PrefabInstance: {fileID: 574306992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1461363206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,8 +2081,14 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1933196777}
+  - {fileID: 1238235188}
   m_Father: {fileID: 50775136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1712566227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 828879790420317816, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+  m_PrefabInstance: {fileID: 574306992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1797298819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +2132,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 10
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2040,7 +2255,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
@@ -2253,7 +2468,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 1
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2429,7 +2644,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 9
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2460,7 +2675,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 6
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2491,7 +2706,7 @@ GameObject:
   m_Layer: 0
   m_Name: Boss waypoint 2
   m_TagString: Boss 2 Melee Pattern 1 Waypoint
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2514,7 +2729,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
+  - {fileID: 154546050}
   - {fileID: 643714581}
   - {fileID: 1879358883}
   - {fileID: 50775136}

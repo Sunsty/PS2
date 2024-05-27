@@ -1,5 +1,133 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &122816095661613518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5235132413657752685}
+  m_Layer: 0
+  m_Name: Pattern 3 Boss Waypoint 4
+  m_TagString: Boss 2 Range Pattern 3 Waypoint
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5235132413657752685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122816095661613518}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -60, y: -25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8874614005733028811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &828879790420317816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7464346789896197678}
+  m_Layer: 0
+  m_Name: Pattern 3 Boss Waypoint 3
+  m_TagString: Boss 2 Range Pattern 3 Waypoint
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7464346789896197678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828879790420317816}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -60, y: 30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8874614005733028811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2228111843185941707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989533327854673880}
+  m_Layer: 0
+  m_Name: Pattern 3 Boss Waypoint 2
+  m_TagString: Boss 2 Range Pattern 3 Waypoint
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1989533327854673880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228111843185941707}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 60, y: -25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8874614005733028811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4057177500411430595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8874614005733028811}
+  m_Layer: 0
+  m_Name: Pattern 3 Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8874614005733028811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057177500411430595}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5132145635013347908}
+  - {fileID: 1989533327854673880}
+  - {fileID: 7464346789896197678}
+  - {fileID: 5235132413657752685}
+  m_Father: {fileID: 756857263325302611}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5663094045491865742
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,14 +316,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   mainCamera: {fileID: 0}
-  currentPattern: 2
+  bossBar: {fileID: 0}
+  meleeBoss: {fileID: 6881683044396500819}
+  currentPattern: 1
   bullet: {fileID: 6425355823059613185, guid: 62c0e34da756eac4abe3b2d18c7f0c02, type: 3}
   speedPattern1: 40
   orbitRange: 55
   shootCdPattern1: 0.7
   pattern2BossWaypoint: {fileID: 7384943168256770892}
   wheel: {fileID: 1922485073506727970, guid: 0704181f3e7c9ad4196175f96cfd5caf, type: 3}
+  maxPattern2Duration: 15
   pattern2Speed: 3
+  pattern3BossWaypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  pattern3Speed: 20
+  maxPattern3Count: 8
+  clock: -0.0017944989
+--- !u!1 &8475119788847149541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5132145635013347908}
+  m_Layer: 0
+  m_Name: Pattern 3 Boss Waypoint 1
+  m_TagString: Boss 2 Range Pattern 3 Waypoint
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5132145635013347908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8475119788847149541}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 60, y: 30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8874614005733028811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1428033090560850307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +426,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 8479699929504512719, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+      propertyPath: m_Name
+      value: Pattern 2 Boss Waypoint
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3171205499006583560, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
     - {fileID: 7669691642736937206, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
@@ -264,6 +438,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1824381351723022032, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       insertIndex: 1
       addedObject: {fileID: 4152095867812761703}
+    - targetCorrespondingSourceObject: {fileID: 1824381351723022032, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 8874614005733028811}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5499390762845273808, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       insertIndex: -1
@@ -292,20 +469,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7602745940414632123}
+  groundCollider: {fileID: 0}
   player: {fileID: 0}
-  bossBar: {fileID: 0}
-  mainCamera: {fileID: 0}
+  rangeBoss: {fileID: 5663094045491865742}
+  cameraShake: {fileID: 0}
+  oWPlatorms: []
   contactDmg: 15
-  currentPattern: 2
+  currentPattern: 1
   pattern1BossWaypoints: []
   dashCdPattern1: 1.5
   dashSpeed: 4
-  maxPattern1Count: 1000
+  maxPattern1Count: 11
   pattern2BossWaypoint: {fileID: 7384943168256770892}
   speedPattern2: -100
   dashSpeedPattern2: -300
   orbitRange: 45
   dashCdPattern2: 1
+  pattern3BossWaypoints: []
+  shockWave: {fileID: 6036803941191463355, guid: 85cf3d42b5e71eb49a8cfe83ac46b765, type: 3}
+  dashCdPattern3: 3
+  groundCdPattern3: 1.5
+  speedPattern3: 2
+  stompForce: 15
+  maxVelocityY: 200
+  clock: 0
 --- !u!1 &7384943168256770892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8479699929504512719, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 /// <summary>
 /// 
@@ -28,14 +30,16 @@ public class Boss2Melee_Patterns : MonoBehaviour
     [Header("Imports"), Space(10)]
 
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] CapsuleCollider2D groundCollider;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject rangeBoss;
+    [SerializeField] GameObject cameraShake;
+    [SerializeField] GameObject[] oWPlatorms;
 
     [Header("Settings"), Space(10)]
 
     [SerializeField] float contactDmg;
-    [SerializeField, Range(1,4), Space(10)] int currentPattern;
+    [SerializeField, Range(1,4), Space(10)] public int currentPattern;
 
     [Header("Pattern 1"), Space(10)]
 
@@ -65,47 +69,54 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
     [Header("Pattern 3"), Space(10)]
 
+    [SerializeField] GameObject[] pattern3BossWaypoints;
+    [SerializeField] GameObject shockWave;
 
+    [Space(10)]
+
+    [SerializeField] float dashCdPattern3;
+    [SerializeField] float groundCdPattern3;
+    [SerializeField] float speedPattern3;
+    [SerializeField] float stompForce;
+    [SerializeField] float maxVelocityY;
+
+    int pattern3Count;
 
     [Header("Private"), Space(10)]
 
-    float clock;
+    [HideInInspector] public float clock;
     int targetIndex;
 
     private void Start()
     {
         pattern1BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 2 Melee Pattern 1 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        pattern3BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 2 Melee Pattern 3 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         player = GameObject.FindGameObjectWithTag("Player");
-    }
 
-    private void FixedUpdate()
-    {
+        groundCollider = GetComponent<CapsuleCollider2D>();
+        Physics2D.IgnoreCollision(groundCollider, player.GetComponent<Collider2D>());
 
-        ///////////////////// - Pattern 1 - /////////////////////
-
-
-        /////////////////////////////////////////////////////////
-
-        ///////////////////// - Pattern 2 - /////////////////////
-
-
-
-        /////////////////////////////////////////////////////////
-
-        ///////////////////// - Pattern 3 - /////////////////////
-
-
-
-        /////////////////////////////////////////////////////////
+        oWPlatorms = GameObject.FindGameObjectsWithTag("OW Platform");
+        foreach (var item in oWPlatorms)
+        {
+            Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), groundCollider);
+        }
     }
 
     private void Update()
     {
+        currentPattern %= 4;
+
+        if (currentPattern == 0)
+        {
+            currentPattern = 1;
+        }
+
         ///////////////////// - Pattern 1 - /////////////////////
 
         if (currentPattern == 1)
-        {            
+        {
+            groundCollider.enabled = false;
 
             if (clock <= 0)
             {
@@ -128,6 +139,7 @@ public class Boss2Melee_Patterns : MonoBehaviour
             {
                 currentPattern = 2;
                 rangeBoss.GetComponent<Boss2Range_Patterns>().currentPattern = 2;
+                rangeBoss.GetComponent<Boss2Range_Patterns>().clock = 0f;
                 clock = 0f;
                 pattern1Count = 0;
                 targetIndex = 0;
@@ -145,6 +157,8 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
         if (currentPattern == 2)
         {
+            groundCollider.enabled = false;
+
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = (transform.position - pattern2BossWaypoint.transform.position).normalized * orbitRange + pattern2BossWaypoint.transform.position;
             transform.RotateAround(pattern2BossWaypoint.transform.position, Vector3.forward, Time.deltaTime * currentSpeed);
@@ -179,7 +193,51 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
         ///////////////////// - Pattern 3 - /////////////////////
 
+        if (currentPattern == 3)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
 
+            groundCollider.enabled = true;
+
+            if (clock > 0)
+            {
+                clock -= Time.deltaTime;
+
+                if (clock < 0)
+                {
+                    pattern3Count++;
+
+                    if (pattern3Count%2 == 0)
+                    {
+                        targetIndex++;
+                        targetIndex %= pattern3BossWaypoints.Length;
+                    }
+                }
+            }
+
+            if (pattern3Count%2 == 0)
+            {
+                if (clock <= 0)
+                {
+                    clock = dashCdPattern3; 
+                }
+
+                rb.velocity = Vector2.zero;
+                float distance = Vector2.Distance(transform.position, pattern3BossWaypoints[targetIndex].transform.position);
+                transform.position = (Vector2.MoveTowards(transform.position, pattern3BossWaypoints[targetIndex].transform.position, speedPattern3 * Time.deltaTime * distance));
+            }
+            else
+            {
+                if (clock <= 0)
+                {
+                    clock = groundCdPattern3;
+                }
+
+                rb.AddForce(Vector2.down * stompForce);
+                float tempClampY = Mathf.Clamp(rb.velocity.y, -maxVelocityY, maxVelocityY);
+                rb.velocity = new Vector2(rb.velocity.x, tempClampY);
+            }
+        }
 
         /////////////////////////////////////////////////////////
     }
@@ -189,6 +247,14 @@ public class Boss2Melee_Patterns : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player_Health>().TakeDamage(contactDmg);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Environment" && currentPattern == 3)
+        {
+            Instantiate(shockWave, new Vector2(transform.position.x, transform.position.y - 5), Quaternion.identity);
         }
     }
 }
