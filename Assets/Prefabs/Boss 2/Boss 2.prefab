@@ -188,10 +188,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   mainCamera: {fileID: 0}
-  currentPattern: 1
+  currentPattern: 2
+  bullet: {fileID: 6425355823059613185, guid: 62c0e34da756eac4abe3b2d18c7f0c02, type: 3}
   speedPattern1: 40
   orbitRange: 55
-  shootCdPattern1: 1
+  shootCdPattern1: 0.7
+  pattern2BossWaypoint: {fileID: 7384943168256770892}
+  wheel: {fileID: 1922485073506727970, guid: 0704181f3e7c9ad4196175f96cfd5caf, type: 3}
+  pattern2Speed: 3
 --- !u!1001 &1428033090560850307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,7 +206,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 176326795471431581, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       propertyPath: m_Name
-      value: Boss 2 Variant
+      value: Boss 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482269863735427727, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.5
       objectReference: {fileID: 0}
     - target: {fileID: 1824381351723022032, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,6 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3171205499006583560, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+    - {fileID: 7669691642736937206, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1824381351723022032, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
@@ -283,14 +292,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7602745940414632123}
+  player: {fileID: 0}
   bossBar: {fileID: 0}
   mainCamera: {fileID: 0}
-  speed: 0
-  currentPattern: 1
+  contactDmg: 15
+  currentPattern: 2
   pattern1BossWaypoints: []
   dashCdPattern1: 1.5
   dashSpeed: 4
   maxPattern1Count: 1000
+  pattern2BossWaypoint: {fileID: 7384943168256770892}
+  speedPattern2: -100
+  dashSpeedPattern2: -300
+  orbitRange: 45
+  dashCdPattern2: 1
+--- !u!1 &7384943168256770892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8479699929504512719, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+  m_PrefabInstance: {fileID: 1428033090560850307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &7602745940414632123 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8814395086714759480, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}

@@ -11,8 +11,13 @@ public class BossProjectile_Behavior : MonoBehaviour
 
     [Header("Additionnal Behavior")]
 
-    [SerializeField] bool additionalBehaviorEruption;
+    [SerializeField, Space(10)] bool additionalBehaviorEruption;
     [SerializeField] GameObject eruption;
+
+    [SerializeField, Space(10)] bool additionalBehaviorBoss2;
+    [SerializeField] float bulletSpeed;
+
+    Vector3 target;
 
     [Header("Settings")]
 
@@ -34,6 +39,12 @@ public class BossProjectile_Behavior : MonoBehaviour
         {
             Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
+
+        if (additionalBehaviorBoss2)
+        {
+            target = player.transform.position;
+            gameObject.GetComponent<Rigidbody2D>().AddForce((target - transform.position).normalized * bulletSpeed * 1000f);
+        }
     }
 
     private void Update()
@@ -54,6 +65,11 @@ public class BossProjectile_Behavior : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player_Health>().TakeDamage(projectileDmg);
+        }
+
+        if (collision.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
         }
     }
 

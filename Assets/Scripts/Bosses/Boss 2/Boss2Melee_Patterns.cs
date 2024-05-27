@@ -25,20 +25,23 @@ using UnityEngine;
 
 public class Boss2Melee_Patterns : MonoBehaviour
 {
-    [Header("Imports")]
+    [Header("Imports"), Space(10)]
 
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] GameObject bossBar;
+    [SerializeField] GameObject player;
     [SerializeField] GameObject mainCamera;
+    [SerializeField] GameObject rangeBoss;
 
-    [Header("Settings")]
+    [Header("Settings"), Space(10)]
 
-    [SerializeField] float speed;
-    [SerializeField, Range(1,4)] int currentPattern;
+    [SerializeField] float contactDmg;
+    [SerializeField, Range(1,4), Space(10)] int currentPattern;
 
-    [Header("Pattern 1")]
+    [Header("Pattern 1"), Space(10)]
 
     [SerializeField] GameObject[] pattern1BossWaypoints;
+
+    [Space(10)]
 
     [SerializeField] float dashCdPattern1;
     [SerializeField] float dashSpeed;
@@ -46,15 +49,25 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
     int pattern1Count;
 
-    [Header("Pattern 2")]
+    [Header("Pattern 2"), Space(10)]
+
+    [SerializeField] GameObject pattern2BossWaypoint;
+
+    [Space(10)]
+
+    [SerializeField] float speedPattern2;
+    [SerializeField] float dashSpeedPattern2;
+    [SerializeField] float orbitRange;
+    [SerializeField] float dashCdPattern2;
+
+    int accelerate;
+    float currentSpeed;
+
+    [Header("Pattern 3"), Space(10)]
 
 
 
-    [Header("Pattern 3")]
-
-
-
-    [Header("Private")]
+    [Header("Private"), Space(10)]
 
     float clock;
     int targetIndex;
@@ -63,7 +76,7 @@ public class Boss2Melee_Patterns : MonoBehaviour
     {
         pattern1BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 2 Melee Pattern 1 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void FixedUpdate()
@@ -71,37 +84,6 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
         ///////////////////// - Pattern 1 - /////////////////////
 
-        if (currentPattern == 1)
-        {
-            bossBar.SetActive(true);
-
-            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
-
-            if (clock <= 0)
-            {
-                clock = dashCdPattern1;
-            }
-
-            if (clock > 0)
-            {
-                clock -= Time.fixedDeltaTime;
-
-                if (clock < 0)
-                {
-                    pattern1Count++;
-                    targetIndex++;
-                    targetIndex = targetIndex % pattern1BossWaypoints.Length;
-                }
-            }
-
-            if (pattern1Count == maxPattern1Count)
-            {
-                currentPattern = 2;
-                clock = 0f;
-                pattern1Count = 0;
-                targetIndex = 0;
-            }
-        }
 
         /////////////////////////////////////////////////////////
 
@@ -123,7 +105,34 @@ public class Boss2Melee_Patterns : MonoBehaviour
         ///////////////////// - Pattern 1 - /////////////////////
 
         if (currentPattern == 1)
-        {
+        {            
+
+            if (clock <= 0)
+            {
+                clock = dashCdPattern1;
+            }
+
+            if (clock > 0)
+            {
+                clock -= Time.deltaTime;
+
+                if (clock < 0)
+                {
+                    pattern1Count++;
+                    targetIndex++;
+                    targetIndex = targetIndex % pattern1BossWaypoints.Length;
+                }
+            }
+
+            if (pattern1Count == maxPattern1Count)
+            {
+                currentPattern = 2;
+                rangeBoss.GetComponent<Boss2Range_Patterns>().currentPattern = 2;
+                clock = 0f;
+                pattern1Count = 0;
+                targetIndex = 0;
+            }
+
             float distance = Vector2.Distance(transform.position, pattern1BossWaypoints[targetIndex].transform.position);
             transform.position = (Vector2.MoveTowards(transform.position, pattern1BossWaypoints[targetIndex].transform.position, dashSpeed * Time.deltaTime * distance));
 
@@ -134,7 +143,37 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
         ///////////////////// - Pattern 2 - /////////////////////
 
+        if (currentPattern == 2)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.position = (transform.position - pattern2BossWaypoint.transform.position).normalized * orbitRange + pattern2BossWaypoint.transform.position;
+            transform.RotateAround(pattern2BossWaypoint.transform.position, Vector3.forward, Time.deltaTime * currentSpeed);
 
+            if (clock <= 0)
+            {
+                clock = dashCdPattern2;
+            }
+
+            if (clock > 0)
+            {
+                clock -= Time.deltaTime;
+
+                if (clock < 0)
+                {
+                    accelerate++;
+                    accelerate = accelerate % 6;
+                }
+            }
+
+            if (accelerate == 5)
+            {
+                currentSpeed = dashSpeedPattern2;
+            }
+            else
+            {
+                currentSpeed = speedPattern2;
+            }
+        }
 
         /////////////////////////////////////////////////////////
 
@@ -143,5 +182,13 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
 
         /////////////////////////////////////////////////////////
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player_Health>().TakeDamage(contactDmg);
+        }
     }
 }

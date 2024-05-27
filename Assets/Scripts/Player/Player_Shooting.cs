@@ -13,6 +13,7 @@ public class Player_Shooting : MonoBehaviour
 
     [SerializeField] float bulletSpeed = 50;
     [SerializeField] float fireRate = 0.01f;
+    [SerializeField] public float projectileDmg;
 
     [Header("")]
 
@@ -22,8 +23,11 @@ public class Player_Shooting : MonoBehaviour
     float shootingCounter;
     bool wantsToShot;
 
+
     private void Update()
     {
+        bullet.GetComponent<Projectile_Behavior>().projectileDmg = projectileDmg;
+
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 

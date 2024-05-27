@@ -51,7 +51,7 @@ public class Projectile_Behavior : MonoBehaviour
     {
         if (collision.CompareTag("Boss"))
         {
-            collision.gameObject.GetComponent<Boss_Health>().TakeDamage(projectileDmg);
+            GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss_Health>().TakeDamage(projectileDmg);
             Destroy(gameObject);
         }
 
@@ -59,6 +59,11 @@ public class Projectile_Behavior : MonoBehaviour
         if (collision.CompareTag("Aim Target"))
         {
             collision.gameObject.GetComponent<AimTarget_Health>().TakeDamage(projectileDmg);
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Shield"))
+        {
             Destroy(gameObject);
         }
     }

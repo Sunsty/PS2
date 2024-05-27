@@ -31,20 +31,29 @@ public class Boss2Range_Patterns : MonoBehaviour
 
     [SerializeField] GameObject player;
     [SerializeField] GameObject mainCamera;
+    [SerializeField] GameObject bossBar;
 
     [Header("Settings"), Space(10)]
 
-    [SerializeField, Range(1,3)] int currentPattern;
+    [SerializeField, Range(1,3)] public int currentPattern;
 
     [Header("Pattern 1"), Space(10)]
 
+    [SerializeField] GameObject bullet;
     [SerializeField] float speedPattern1;
     [SerializeField] float orbitRange;
     [SerializeField] float shootCdPattern1;
 
     [Header("Pattern 2"), Space(10)]
 
+    [SerializeField] GameObject pattern2BossWaypoint;
+    [SerializeField] GameObject wheel;
 
+    [Space(10)]
+
+    [SerializeField] float pattern2Speed;
+
+    bool startPattern2;
 
     [Header("Pattern 3"), Space(10)]
 
@@ -58,16 +67,13 @@ public class Boss2Range_Patterns : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
     }
 
     private void FixedUpdate()
     {
         ///////////////////// - Pattern 1 - /////////////////////
 
-        if (currentPattern == 1)
-        {
-
-        }
 
         /////////////////////////////////////////////////////////
 
@@ -90,6 +96,8 @@ public class Boss2Range_Patterns : MonoBehaviour
 
         if (currentPattern == 1)
         {
+            bossBar.SetActive(true);
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -107,7 +115,7 @@ public class Boss2Range_Patterns : MonoBehaviour
 
                 if (clock < 0)
                 {
-                    Debug.Log("Shoot");
+                    GameObject bulletClone = Instantiate(bullet, transform.position, Quaternion.identity);
                 }
             }
         }
@@ -118,7 +126,17 @@ public class Boss2Range_Patterns : MonoBehaviour
 
         if (currentPattern == 2)
         {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
 
+            if (!startPattern2 && Vector2.Distance(transform.position, pattern2BossWaypoint.transform.position) <= 0.1f)
+            {
+                GameObject wheelClone = Instantiate(wheel, transform.position, Quaternion.identity);
+                startPattern2 = true;
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            float distance = Vector2.Distance(transform.position, pattern2BossWaypoint.transform.position);
+            transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoint.transform.position, pattern2Speed * Time.deltaTime * distance));
         }
 
         /////////////////////////////////////////////////////////
