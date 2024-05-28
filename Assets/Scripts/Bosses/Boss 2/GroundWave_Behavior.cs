@@ -7,6 +7,7 @@ public class GroundWave_Behavior : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float offset;
     [SerializeField] float lifeSpan;
+    [SerializeField] float contactDmg;
 
     float clock;
     private int step;
@@ -47,6 +48,14 @@ public class GroundWave_Behavior : MonoBehaviour
         if (step == 2)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player_Health>().TakeDamage(contactDmg);
         }
     }
 }

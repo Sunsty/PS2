@@ -8,6 +8,7 @@ public class Camera_Follow : MonoBehaviour
 
     [SerializeField] GameObject player;
     [SerializeField] GameObject boss;
+    [SerializeField] GameObject boss2;
     [SerializeField] GameObject hud;
 
     [Header("Settings")]
@@ -43,6 +44,12 @@ public class Camera_Follow : MonoBehaviour
     [SerializeField] float timeOffset5;
     [SerializeField] Vector3 posOffset5;
     [SerializeField, Range(1, 50)] float cameraSize5;
+    
+    [Header("Camera 6")]
+
+    [SerializeField] float timeOffset6;
+    [SerializeField] Vector3 posOffset6;
+    [SerializeField, Range(1, 50)] float cameraSize6;
 
     [Header("Private")]
 
@@ -55,9 +62,10 @@ public class Camera_Follow : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         boss = GameObject.FindGameObjectWithTag("Boss");
+        boss2 = GameObject.FindGameObjectWithTag("Boss2");
 
 
-        if (cameraBehavior == 1)
+        if (cameraBehavior == 1 && boss != null)
         {
             target = (player.transform.position + boss.transform.position) / 2f;
             timeOffset = timeOffset1;
@@ -106,6 +114,16 @@ public class Camera_Follow : MonoBehaviour
             t += 2 * Time.deltaTime;
             gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, cameraSize5, t);
             hud.SetActive(false);
+        }
+        else if (cameraBehavior == 6)
+        {
+            target = (player.transform.position + boss2.transform.position) / 2f;
+            timeOffset = timeOffset6;
+            posOffset = posOffset6;
+            float t = 0;
+            t += 2 * Time.deltaTime;
+            gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, cameraSize6, t);
+            hud.SetActive(true);
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, target + posOffset, ref velocity, timeOffset);

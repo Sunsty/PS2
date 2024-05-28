@@ -318,8 +318,8 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   bossBar: {fileID: 0}
   meleeBoss: {fileID: 6881683044396500819}
-  currentPattern: 1
   bullet: {fileID: 6425355823059613185, guid: 62c0e34da756eac4abe3b2d18c7f0c02, type: 3}
+  currentPattern: 1
   speedPattern1: 40
   orbitRange: 55
   shootCdPattern1: 0.7
@@ -328,11 +328,12 @@ MonoBehaviour:
   maxPattern2Duration: 15
   pattern2Speed: 3
   pattern3BossWaypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8475119788847149541}
+  - {fileID: 2228111843185941707}
+  - {fileID: 828879790420317816}
+  - {fileID: 122816095661613518}
   pattern3Speed: 20
+  bulletSpeedPattern3: 0
   maxPattern3Count: 8
   clock: -0.0017944989
 --- !u!1 &8475119788847149541

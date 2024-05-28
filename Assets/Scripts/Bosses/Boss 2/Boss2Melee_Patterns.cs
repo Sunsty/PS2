@@ -39,7 +39,7 @@ public class Boss2Melee_Patterns : MonoBehaviour
     [Header("Settings"), Space(10)]
 
     [SerializeField] float contactDmg;
-    [SerializeField, Range(1,4), Space(10)] public int currentPattern;
+    [SerializeField, Range(0,4), Space(10)] public int currentPattern;
 
     [Header("Pattern 1"), Space(10)]
 
@@ -105,12 +105,6 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
     private void Update()
     {
-        currentPattern %= 4;
-
-        if (currentPattern == 0)
-        {
-            currentPattern = 1;
-        }
 
         ///////////////////// - Pattern 1 - /////////////////////
 

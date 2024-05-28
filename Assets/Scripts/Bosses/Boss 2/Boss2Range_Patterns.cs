@@ -35,14 +35,16 @@ public class Boss2Range_Patterns : MonoBehaviour
     [SerializeField] GameObject bossBar;
     [SerializeField] GameObject meleeBoss;
 
-
     [Header("Settings"), Space(10)]
 
-    [SerializeField, Range(1,4)] public int currentPattern;
+    [SerializeField, Range(0,4)] public int currentPattern;
 
     [Header("Pattern 1"), Space(10)]
 
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject bulletPattern1;
+
+    [Space(10)]
+
     [SerializeField] float speedPattern1;
     [SerializeField] float orbitRange;
     [SerializeField] float shootCdPattern1;
@@ -63,7 +65,13 @@ public class Boss2Range_Patterns : MonoBehaviour
     [Header("Pattern 3"), Space(10)]
 
     [SerializeField] GameObject[] pattern3BossWaypoints;
+    [SerializeField] GameObject bulletPattern3;
+
+    [Space(10)]
+
     [SerializeField] float pattern3Speed;
+    [SerializeField] float bulletSpeedPattern3;
+    [SerializeField] float fireRatePattern3;
     [SerializeField] int maxPattern3Count;
 
     int pattern3Count;
@@ -83,11 +91,18 @@ public class Boss2Range_Patterns : MonoBehaviour
 
     private void Update()
     {
-        currentPattern %= 4;
+
+        ///////////////////// - Pattern 0 - /////////////////////
 
         if (currentPattern == 0)
         {
-            currentPattern = 1;
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentPattern = 1;
+                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 1;
+            }
         }
 
         ///////////////////// - Pattern 1 - /////////////////////
@@ -113,7 +128,7 @@ public class Boss2Range_Patterns : MonoBehaviour
 
                 if (clock < 0)
                 {
-                    GameObject bulletClone = Instantiate(bullet, transform.position, Quaternion.identity);
+                    GameObject bulletClone = Instantiate(bulletPattern1, transform.position, Quaternion.identity);
                 }
             }
         }
@@ -162,11 +177,49 @@ public class Boss2Range_Patterns : MonoBehaviour
 
         if (currentPattern == 3)
         {
-            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(6);
 
             if (targetIndex == 1 || targetIndex == 3)
             {
                 transform.position = (Vector2.MoveTowards(transform.position, pattern3BossWaypoints[targetIndex].transform.position, pattern3Speed * Time.deltaTime));
+
+                if (targetIndex == 1)
+                {
+                    if (clock <= 0f)
+                    {
+                        clock = fireRatePattern3;
+                    }
+
+                    if (clock > 0f)
+                    {
+                        clock -= Time.deltaTime;
+
+                        if (clock < 0f)
+                        {
+                            GameObject bulletClone = Instantiate(bulletPattern3, transform.position, Quaternion.identity);
+                            bulletClone.GetComponent<Rigidbody2D>().velocity = Vector2.right * -bulletSpeedPattern3;
+                        }
+                    }
+                }
+
+                if (targetIndex == 3)
+                {
+                    if (clock <= 0f)
+                    {
+                        clock = fireRatePattern3;
+                    }
+
+                    if (clock > 0f)
+                    {
+                        clock -= Time.deltaTime;
+
+                        if (clock < 0f)
+                        {
+                            GameObject bulletClone = Instantiate(bulletPattern3, transform.position, Quaternion.identity);
+                            bulletClone.GetComponent<Rigidbody2D>().velocity = Vector2.right * bulletSpeedPattern3;
+                        }
+                    }
+                }
             }
             else if(targetIndex == 0)
             {
@@ -190,11 +243,11 @@ public class Boss2Range_Patterns : MonoBehaviour
 
             if (pattern3Count == maxPattern3Count)
             {
-                currentPattern++;
+                currentPattern = 1;
                 clock = 0f;
                 pattern3Count = 0;
                 targetIndex = 0;
-                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 4;
+                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 1;
                 meleeBoss.GetComponent<Boss2Melee_Patterns>().clock = 0f;
             }
 

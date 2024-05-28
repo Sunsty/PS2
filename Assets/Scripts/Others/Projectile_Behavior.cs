@@ -49,7 +49,7 @@ public class Projectile_Behavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Boss"))
+        if (collision.CompareTag("Boss") || collision.CompareTag("Boss2"))
         {
             GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss_Health>().TakeDamage(projectileDmg);
             Destroy(gameObject);

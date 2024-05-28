@@ -19,6 +19,7 @@ TagManager:
   - Boss 2 Melee Pattern 3 Waypoint
   - Camera Shake
   - Boss 2 Range Pattern 3 Waypoint
+  - Boss2
   layers:
   - Default
   - TransparentFX
