@@ -100,6 +100,11 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   bossBar: {fileID: 0}
   currentPattern: 1
+  speechBubble1: {fileID: 5220248775169027542, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
+  speechBubble2: {fileID: 1632278797250079973, guid: d609afb100b1526428ba31a714edf409, type: 3}
+  speechBubble3: {fileID: 47921733645433483, guid: e6ec5a8c231e63247bd703d3f30727a5, type: 3}
+  speechBubble4: {fileID: 6109912194982966047, guid: 888c7df4775355d44a6ff0c22f329d37, type: 3}
+  speechOffset: 30
   wallUp: {fileID: 3512611001439313557, guid: 43673d5101acbcf4f82dd3212d66665c, type: 3}
   downOffset: 40
   wallDown: {fileID: 2318769254103092095, guid: 1bb7650174fdcca49ab335a6e6f8065d, type: 3}

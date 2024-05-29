@@ -13,21 +13,43 @@ public class SpeechBubble_Behavior : MonoBehaviour
 
     [SerializeField] float waitTime;
     [SerializeField] float fontSize;
+    [SerializeField] int patternToGo;
+
+    int index;
 
     private void Awake()
     {
         GetComponent<TextMeshPro>().fontSize = fontSize;
-
-        for (int i = 0; i < texts.Length; i++)
-        {
-            StartCoroutine(DisplayText(i, texts[i]));
-        }
     }
 
-    IEnumerator DisplayText(float i, string text)
+    private void Update()
     {
-        yield return new WaitForSeconds(i * waitTime);
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            index++;
+        }
 
-        GetComponent<TextMeshPro>().text = text;
+        if (texts[index] == "X")
+        {
+
+            if (gameObject.GetComponentInParent<Boss2Range_Patterns>() == null && gameObject.GetComponentInParent<Boss1_Patterns>() == null) 
+            {
+                gameObject.GetComponentInParent<BossTuto_Patterns>().currentPattern = patternToGo;
+            }
+
+            if (gameObject.GetComponentInParent<Boss2Range_Patterns>() == null && gameObject.GetComponentInParent<BossTuto_Patterns>() == null) 
+            {
+                gameObject.GetComponentInParent<Boss1_Patterns>().currentPattern = patternToGo;
+            }
+
+            if (gameObject.GetComponentInParent<Boss1_Patterns>() == null && gameObject.GetComponentInParent<BossTuto_Patterns>() == null) 
+            {
+                gameObject.GetComponentInParent<Boss2Range_Patterns>().currentPattern = patternToGo;
+            }
+
+            Destroy(gameObject);
+        }
+
+        GetComponent<TextMeshPro>().text = texts[index];
     }
 }

@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1968914871619290547
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.027046178
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: fontSize
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: patternToGo
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[0]
+      value: "Bienvenue \xE0 la s\xE9lection officiel pour l'ar\xE8ne"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[1]
+      value: "Je vais vous faire passer plusieurs \xE9preuves"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[2]
+      value: "Pour tester vos capacit\xE9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[3]
+      value: "Et savoir si vous \xEAtes apte au combat"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[4]
+      value: Vous pouvez bouger avec [Q] et [D]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[5]
+      value: Et Sauter/Voler avec [Espace]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[6]
+      value: Esquivez les murs qui approchent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: texts.Array.data[7]
+      value: X
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990052755153365093, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      propertyPath: m_Name
+      value: Speech Bubble Tuto 1 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba4363616abf4454089abb939a0e95b0, type: 3}

@@ -34,7 +34,7 @@ public class BossTuto_Patterns : MonoBehaviour
 
     [Header("Settings")]
 
-    [SerializeField, Range(1, 8)] int currentPattern;
+    [SerializeField, Range(1, 8)] public int currentPattern;
 
     [Header("Speech Bubbles"), Space(10)]
 
@@ -42,6 +42,10 @@ public class BossTuto_Patterns : MonoBehaviour
     [SerializeField] GameObject speechBubble2;
     [SerializeField] GameObject speechBubble3;
     [SerializeField] GameObject speechBubble4;
+
+    [SerializeField] float speechOffset;
+
+    bool speechBubbleSpawned;
 
     [Header("Pattern 1")]
 
@@ -91,7 +95,7 @@ public class BossTuto_Patterns : MonoBehaviour
 
     private void Start()
     {
-        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
+        bossBar = GameObject.Find("Boss Bar");
 
         bossBar.SetActive(false);
 
@@ -110,7 +114,7 @@ public class BossTuto_Patterns : MonoBehaviour
 
     private void Update()
     {
-        currentPattern = currentPattern % 8;
+        bossBar.SetActive(false);
 
         ///////////////////// - Pattern Cine 1 - /////////////////////
 
@@ -118,9 +122,10 @@ public class BossTuto_Patterns : MonoBehaviour
         {
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (!speechBubbleSpawned)
             {
-                currentPattern++;
+                InstantiateSpeech(speechBubble1, speechOffset);
+                speechBubbleSpawned = true;
             }
         }
 
@@ -130,7 +135,11 @@ public class BossTuto_Patterns : MonoBehaviour
 
         if (currentPattern == 2)
         {
+            speechBubbleSpawned = false;
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+
+            bossBar.SetActive(false);
 
             if (clock <= 0)
             {
@@ -176,9 +185,10 @@ public class BossTuto_Patterns : MonoBehaviour
         {
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (!speechBubbleSpawned)
             {
-                currentPattern++;
+                InstantiateSpeech(speechBubble2, speechOffset);
+                speechBubbleSpawned = true;
             }
         }
 
@@ -188,7 +198,11 @@ public class BossTuto_Patterns : MonoBehaviour
 
         if (currentPattern == 4)
         {
+            speechBubbleSpawned = false;
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+
+            bossBar.SetActive(false);
 
             if (activeAimTargets.Length == 0)
             {            
@@ -216,9 +230,10 @@ public class BossTuto_Patterns : MonoBehaviour
         {
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (!speechBubbleSpawned)
             {
-                currentPattern++;
+                InstantiateSpeech(speechBubble3, speechOffset);
+                speechBubbleSpawned = true;
             }
         }
 
@@ -228,7 +243,11 @@ public class BossTuto_Patterns : MonoBehaviour
 
         if (currentPattern == 6)
         {
+            speechBubbleSpawned = false;
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+
+            bossBar.SetActive(false);
 
             if (clock <= 0)
             {
@@ -267,13 +286,28 @@ public class BossTuto_Patterns : MonoBehaviour
         {
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (!speechBubbleSpawned)
             {
-                mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
-                this.enabled = false;
+                InstantiateSpeech(speechBubble4, speechOffset);
+                speechBubbleSpawned = true;
             }
         }
 
         //////////////////////////////////////////////////////////////
+        
+        //////////////////// - Pattern Free Cam - ////////////////////
+
+        if (currentPattern == 8)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+            this.enabled = false;
+        }
+
+        //////////////////////////////////////////////////////////////
+    }
+
+    private void InstantiateSpeech(GameObject speechBubble, float offset)
+    {
+        Instantiate(speechBubble, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), Quaternion.identity, transform);
     }
 }

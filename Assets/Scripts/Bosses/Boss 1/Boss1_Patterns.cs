@@ -43,11 +43,16 @@ public class Boss1_Patterns : MonoBehaviour
     [Header("Settings"), Space(10)]
 
     [SerializeField] float contactDmg;
-    [SerializeField] [Range(0, 4)] int currentPattern;
+    [SerializeField, Range(0, 4)] public int currentPattern;
 
     [Header("Speech Bubbles"), Space(10)]
 
+    [SerializeField] GameObject speechBubble1;
+    [SerializeField] GameObject speechBubble2;
 
+    [SerializeField] float speechOffset;
+
+    bool speechBubbleSpawned;
 
     [Header("Pattern 1"), Space(10)]
 
@@ -137,9 +142,10 @@ public class Boss1_Patterns : MonoBehaviour
         {
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (!speechBubbleSpawned)
             {
-                currentPattern = 1;
+                InstantiateSpeech(speechBubble1, speechOffset);
+                speechBubbleSpawned = true;
             }
         }
 
@@ -147,6 +153,8 @@ public class Boss1_Patterns : MonoBehaviour
 
         if (currentPattern == 1)
         {
+            speechBubbleSpawned = false;
+
             bossBar.SetActive(true);
 
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
@@ -286,6 +294,12 @@ public class Boss1_Patterns : MonoBehaviour
         if (currentPattern == 4)
         {
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (!speechBubbleSpawned)
+            {
+                InstantiateSpeech(speechBubble2, speechOffset);
+                speechBubbleSpawned = true;
+            }
         }
 
         /////////////////////////////////////////////////////////
@@ -376,12 +390,6 @@ public class Boss1_Patterns : MonoBehaviour
         {
             float distance = Vector2.Distance(transform.position, cinematicBossWaypoint.transform.position);
             transform.position = (Vector2.MoveTowards(transform.position, cinematicBossWaypoint.transform.position, normalSpeedPattern3 * Time.deltaTime * distance));
-
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                currentPattern = 1;
-                clock = 0f;
-            }
         }
 
         /////////////////////////////////////////////////////////
@@ -410,5 +418,10 @@ public class Boss1_Patterns : MonoBehaviour
         {
             collision.gameObject.GetComponent<Player_Health>().TakeDamage(contactDmg);
         }
+    }
+
+    private void InstantiateSpeech(GameObject speechBubble, float offset)
+    {
+        Instantiate(speechBubble, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), Quaternion.identity, transform);
     }
 }
