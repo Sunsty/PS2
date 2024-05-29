@@ -17,8 +17,8 @@ public class Projectile_Behavior : MonoBehaviour
     {
         isTraveling = true;
         player = GameObject.FindGameObjectWithTag("Player");
-        oWPlatorms = GameObject.FindGameObjectsWithTag("OW Platform");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        oWPlatorms = GameObject.FindGameObjectsWithTag("OW Platform");
         foreach (var item  in oWPlatorms)
         {
             Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), GetComponent<Collider2D>());

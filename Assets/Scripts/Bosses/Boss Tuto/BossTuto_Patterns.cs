@@ -36,6 +36,13 @@ public class BossTuto_Patterns : MonoBehaviour
 
     [SerializeField, Range(1, 8)] int currentPattern;
 
+    [Header("Speech Bubbles"), Space(10)]
+
+    [SerializeField] GameObject speechBubble1;
+    [SerializeField] GameObject speechBubble2;
+    [SerializeField] GameObject speechBubble3;
+    [SerializeField] GameObject speechBubble4;
+
     [Header("Pattern 1")]
 
     [SerializeField] GameObject wallUp;

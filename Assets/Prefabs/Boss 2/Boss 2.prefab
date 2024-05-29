@@ -318,8 +318,8 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   bossBar: {fileID: 0}
   meleeBoss: {fileID: 6881683044396500819}
-  bullet: {fileID: 6425355823059613185, guid: 62c0e34da756eac4abe3b2d18c7f0c02, type: 3}
-  currentPattern: 1
+  currentPattern: 0
+  bulletPattern1: {fileID: 6425355823059613185, guid: 62c0e34da756eac4abe3b2d18c7f0c02, type: 3}
   speedPattern1: 40
   orbitRange: 55
   shootCdPattern1: 0.7
@@ -332,8 +332,10 @@ MonoBehaviour:
   - {fileID: 2228111843185941707}
   - {fileID: 828879790420317816}
   - {fileID: 122816095661613518}
+  bulletPattern3: {fileID: 3704247465052533510, guid: a2e7998d7a9f2d0468083f802752c88c, type: 3}
   pattern3Speed: 20
-  bulletSpeedPattern3: 0
+  bulletSpeedPattern3: 50
+  fireRatePattern3: 0.3
   maxPattern3Count: 8
   clock: -0.0017944989
 --- !u!1 &8475119788847149541
@@ -427,6 +429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 5499390762845273808, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+      propertyPath: m_TagString
+      value: Boss2
+      objectReference: {fileID: 0}
     - target: {fileID: 8479699929504512719, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       propertyPath: m_Name
       value: Pattern 2 Boss Waypoint
@@ -446,6 +452,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5499390762845273808, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5046870486594682499}
+    - targetCorrespondingSourceObject: {fileID: 5499390762845273808, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3631631127717162059}
   m_SourcePrefab: {fileID: 100100000, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
 --- !u!4 &756857263325302611 stripped
 Transform:
@@ -476,7 +485,7 @@ MonoBehaviour:
   cameraShake: {fileID: 0}
   oWPlatorms: []
   contactDmg: 15
-  currentPattern: 1
+  currentPattern: 0
   pattern1BossWaypoints: []
   dashCdPattern1: 1.5
   dashSpeed: 4
@@ -494,6 +503,41 @@ MonoBehaviour:
   stompForce: 15
   maxVelocityY: 200
   clock: 0
+--- !u!70 &3631631127717162059
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6881683044396500819}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.48}
+  m_Size: {x: 0.09, y: 0.03}
+  m_Direction: 1
 --- !u!1 &7384943168256770892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8479699929504512719, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}

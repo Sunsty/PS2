@@ -34,18 +34,22 @@ using UnityEngine;
  
 public class Boss1_Patterns : MonoBehaviour
 {
-    [Header("Imports")]
+    [Header("Imports"), Space(10)]
 
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject bossBar;
 
-    [Header("Settings")]
+    [Header("Settings"), Space(10)]
 
     [SerializeField] float contactDmg;
     [SerializeField] [Range(0, 4)] int currentPattern;
 
-    [Header("Pattern 1")]
+    [Header("Speech Bubbles"), Space(10)]
+
+
+
+    [Header("Pattern 1"), Space(10)]
 
     [SerializeField] GameObject[] pattern1BossWaypoints;
 
@@ -56,7 +60,7 @@ public class Boss1_Patterns : MonoBehaviour
 
     int pattern1Count;
 
-    [Header("Pattern 2")]
+    [Header("Pattern 2"), Space(10)]
 
     [SerializeField] GameObject fireBall;
     [SerializeField] GameObject[] pattern2BossWaypoints;
@@ -68,7 +72,7 @@ public class Boss1_Patterns : MonoBehaviour
 
     int pattern2Count;
 
-    [Header("Pattern 3")]
+    [Header("Pattern 3"), Space(10)]
 
     [SerializeField] GameObject circleWaveProjectile;
     [SerializeField] GameObject pattern3BossWaypoint;
@@ -80,13 +84,13 @@ public class Boss1_Patterns : MonoBehaviour
 
     int pattern3Count;
 
-    [Header("Pattern 4")]
+    [Header("Pattern 4"), Space(10)]
 
     [SerializeField] GameObject cinematicBossWaypoint;
 
     [SerializeField] float secondPhaseHealth;
 
-    [Header("Enraged Stats")]
+    [Header("Enraged Stats"), Space(10)]
 
     [SerializeField] float dashCdPattern1Enraged;
     [SerializeField] float dashSpeedPattern1Enraged;
@@ -105,7 +109,7 @@ public class Boss1_Patterns : MonoBehaviour
 
     bool enraged;
 
-    [Header("Private")]
+    [Header("Private"), Space(10)]
 
     float clock;
     int targetIndex;
@@ -200,7 +204,7 @@ public class Boss1_Patterns : MonoBehaviour
 
             if (clock <= 0)
             {
-                clock = dashCdPattern1;
+                clock = dashCdPattern2;
             }
 
             if (clock > 0)
@@ -217,19 +221,19 @@ public class Boss1_Patterns : MonoBehaviour
 
             if ((Vector2.Distance(transform.position, pattern2BossWaypoints[1].transform.position) <= 15f && targetIndex == 1 )|| ( Vector2.Distance(transform.position, pattern2BossWaypoints[3].transform.position) <= 15f && targetIndex == 3))
             {
-                clock = dashCdPattern1;
+                clock = dashCdPattern2;
                 targetIndex += 1;
                 targetIndex = targetIndex % 4;
             }
 
             if (targetIndex == 0 || targetIndex == 2)
             {
-                moveSpeed = normalSpeedPattern1;
+                moveSpeed = normalSpeedPattern2;
             }
 
             if (targetIndex == 1 || targetIndex == 3)
             {
-                moveSpeed = dashSpeedPattern1;
+                moveSpeed = dashSpeedPattern2;
             }
 
             if (pattern2Count == maxPattern2Count)
