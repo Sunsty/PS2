@@ -140,11 +140,6 @@ public class Boss1_Patterns : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-    }
-
-    private void Update()
-    {
         ///////////////////// - Pattern 0 - /////////////////////
 
         if (currentPattern == 0)
@@ -176,7 +171,7 @@ public class Boss1_Patterns : MonoBehaviour
 
             if (clock > 0)
             {
-                clock -= Time.deltaTime;
+                clock -= Time.fixedDeltaTime;
 
                 if (clock < 0)
                 {
@@ -227,7 +222,7 @@ public class Boss1_Patterns : MonoBehaviour
 
             if (clock > 0)
             {
-                clock -= Time.deltaTime;
+                clock -= Time.fixedDeltaTime;
 
                 if (clock < 0)
                 {
@@ -333,15 +328,10 @@ public class Boss1_Patterns : MonoBehaviour
         }
 
         /////////////////////////////////////////////////////////
-        
+    }
 
-
-
-
-
-
-
-
+    private void Update()
+    {
 
         ///////////////////// - Pattern 1 - /////////////////////
 
