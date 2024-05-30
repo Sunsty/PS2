@@ -32,19 +32,24 @@ public class SpeechBubble_Behavior : MonoBehaviour
         if (texts[index] == "X")
         {
 
-            if (gameObject.GetComponentInParent<Boss2Range_Patterns>() == null && gameObject.GetComponentInParent<Boss1_Patterns>() == null) 
+            if (gameObject.GetComponentInParent<Boss2Range_Patterns>() == null && gameObject.GetComponentInParent<Boss1_Patterns>() == null && gameObject.GetComponentInParent<Boss2Melee_Patterns>() == null) 
             {
                 gameObject.GetComponentInParent<BossTuto_Patterns>().currentPattern = patternToGo;
             }
 
-            if (gameObject.GetComponentInParent<Boss2Range_Patterns>() == null && gameObject.GetComponentInParent<BossTuto_Patterns>() == null) 
+            if (gameObject.GetComponentInParent<Boss2Range_Patterns>() == null && gameObject.GetComponentInParent<BossTuto_Patterns>() == null && gameObject.GetComponentInParent<Boss2Melee_Patterns>() == null) 
             {
                 gameObject.GetComponentInParent<Boss1_Patterns>().currentPattern = patternToGo;
             }
 
-            if (gameObject.GetComponentInParent<Boss1_Patterns>() == null && gameObject.GetComponentInParent<BossTuto_Patterns>() == null) 
+            if (gameObject.GetComponentInParent<Boss1_Patterns>() == null && gameObject.GetComponentInParent<BossTuto_Patterns>() == null && gameObject.GetComponentInParent<Boss2Melee_Patterns>() == null) 
             {
                 gameObject.GetComponentInParent<Boss2Range_Patterns>().currentPattern = patternToGo;
+            }
+
+            if (gameObject.GetComponentInParent<Boss1_Patterns>() == null && gameObject.GetComponentInParent<BossTuto_Patterns>() == null && gameObject.GetComponentInParent<Boss2Range_Patterns>() == null) 
+            {
+                gameObject.GetComponentInParent<Boss2Melee_Patterns>().currentPattern = patternToGo;
             }
 
             Destroy(gameObject);

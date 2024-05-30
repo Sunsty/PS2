@@ -90,23 +90,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7754470245505287898, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
       propertyPath: m_Name
-      value: Speech Bubble Boss 2 1 Variant
+      value: Speech Bubble Boss 2 Melee 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9029035249649224022, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
       propertyPath: texts.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9029035249649224022, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
       propertyPath: texts.Array.data[0]
-      value: 
+      value: C'est pas si cool la violence finalement
       objectReference: {fileID: 0}
     - target: {fileID: 9029035249649224022, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
       propertyPath: texts.Array.data[1]
-      value: 
+      value: X
       objectReference: {fileID: 0}
     - target: {fileID: 9029035249649224022, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
       propertyPath: texts.Array.data[2]
-      value: 
+      value: X
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029035249649224022, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
+      propertyPath: texts.Array.data[3]
+      value: X
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

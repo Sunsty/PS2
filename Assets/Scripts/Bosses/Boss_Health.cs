@@ -8,23 +8,28 @@ public class Boss_Health : MonoBehaviour
     [Header("Imports")]
 
     [SerializeField] GameObject bossBar;
+    [SerializeField] GameObject hud;
+
 
     [Header("Settings")]
 
     [SerializeField] float maxHealth;
+    [SerializeField] int patternToGo;
 
     [Header("")]
 
     float health;
     Image healthBar;
-    GameObject mainCamera;
 
     private void Start()
     {
         health = maxHealth;
-        healthBar = GameObject.FindGameObjectWithTag("Boss Bar").GetComponentInChildren<Image>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        bossBar = GameObject.Find("Boss Bar");
+
+        hud = GameObject.Find("HUD");
+
+        bossBar = hud.transform.Find("Boss Bar").gameObject;
+        bossBar.SetActive(true);
+        healthBar = GameObject.Find("Boss Health").GetComponent<Image>();
     }
 
     private void Update()
@@ -40,7 +45,16 @@ public class Boss_Health : MonoBehaviour
         if (health <= 0f)
         {
             health = 0f;
-            GetComponent<Boss1_Patterns>().currentPattern = 5;
+            if (GetComponent<Boss2Melee_Patterns>() == null && GetComponent<Boss2Range_Patterns>() == null)
+            {
+                GetComponent<Boss1_Patterns>().currentPattern = patternToGo;
+            }
+            else if (GetComponent<Boss1_Patterns>() == null)
+            {
+                GameObject.Find("Boss Melee").GetComponent<Boss2Melee_Patterns>().currentPattern = patternToGo;
+                GetComponent<Boss2Range_Patterns>().currentPattern = patternToGo;
+            }
+
             bossBar.SetActive(false);
         }
 

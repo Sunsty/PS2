@@ -62,6 +62,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8874614005733028811}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2092287963947606583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8082151842168762480}
+  m_Layer: 0
+  m_Name: Base Melee
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8082151842168762480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092287963947606583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 756857263325302611}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2228111843185941707
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossBar: {fileID: 0}
   maxHealth: 5000
+  patternToGo: 4
 --- !u!114 &590182387483648355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +351,9 @@ MonoBehaviour:
   bossBar: {fileID: 0}
   meleeBoss: {fileID: 6881683044396500819}
   currentPattern: 0
+  speechBubble1: {fileID: 2395488159013917376, guid: d7633e6aabf411c45bf31bc16146caa3, type: 3}
+  speechBubble2: {fileID: 2395488159013917376, guid: 2716e484b7dd28b409ca442c8aafc601, type: 3}
+  speechOffset: 30
   bulletPattern1: {fileID: 6425355823059613185, guid: 62c0e34da756eac4abe3b2d18c7f0c02, type: 3}
   speedPattern1: 40
   orbitRange: 55
@@ -337,7 +372,39 @@ MonoBehaviour:
   bulletSpeedPattern3: 50
   fireRatePattern3: 0.3
   maxPattern3Count: 8
+  basePos: {fileID: 2092287963947606583}
   clock: -0.0017944989
+--- !u!1 &5945960706397578815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6180410909976493890}
+  m_Layer: 0
+  m_Name: Base Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6180410909976493890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945960706397578815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 756857263325302611}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8475119788847149541
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +515,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1824381351723022032, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       insertIndex: 3
       addedObject: {fileID: 8874614005733028811}
+    - targetCorrespondingSourceObject: {fileID: 1824381351723022032, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8082151842168762480}
+    - targetCorrespondingSourceObject: {fileID: 1824381351723022032, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6180410909976493890}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5499390762845273808, guid: 706101da8cdd60b47a1b05a1d6f615dd, type: 3}
       insertIndex: -1
@@ -486,6 +559,9 @@ MonoBehaviour:
   oWPlatorms: []
   contactDmg: 15
   currentPattern: 0
+  speechBubble1: {fileID: 2395488159013917376, guid: 4db443abce4ce9244ad625ac6f94c961, type: 3}
+  speechBubble2: {fileID: 2395488159013917376, guid: dd6e27e2f1a9a084da9dbabe67cf41a1, type: 3}
+  speechOffset: 30
   pattern1BossWaypoints: []
   dashCdPattern1: 1.5
   dashSpeed: 4
@@ -502,6 +578,7 @@ MonoBehaviour:
   speedPattern3: 2
   stompForce: 15
   maxVelocityY: 200
+  basePos: {fileID: 5945960706397578815}
   clock: 0
 --- !u!70 &3631631127717162059
 CapsuleCollider2D:

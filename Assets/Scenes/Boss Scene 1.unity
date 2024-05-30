@@ -348,7 +348,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935055636463346958, guid: 7975fc3843d6d9541acb1cde4c232c6c, type: 3}
       propertyPath: currentPattern
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1935055636463346958, guid: 7975fc3843d6d9541acb1cde4c232c6c, type: 3}
       propertyPath: sceneLoadTrigger
@@ -413,11 +413,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 390041823330543907, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
       propertyPath: scene
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 709024602419480441, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 177.2
+      value: 148.4
       objectReference: {fileID: 0}
     - target: {fileID: 709024602419480441, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
       propertyPath: m_LocalPosition.y

@@ -41,6 +41,15 @@ public class Boss2Melee_Patterns : MonoBehaviour
     [SerializeField] float contactDmg;
     [SerializeField, Range(0,4), Space(10)] public int currentPattern;
 
+    [Header("Speech Bubbles"), Space(10)]
+
+    [SerializeField] GameObject speechBubble1;
+    [SerializeField] GameObject speechBubble2;
+
+    [SerializeField] float speechOffset;
+
+    bool speechBubbleSpawned;
+
     [Header("Pattern 1"), Space(10)]
 
     [SerializeField] GameObject[] pattern1BossWaypoints;
@@ -82,6 +91,12 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
     int pattern3Count;
 
+    [Header("Pattern 4"), Space(10)]
+
+    [SerializeField] GameObject basePos;
+
+    [Space(10)]
+
     [Header("Private"), Space(10)]
 
     [HideInInspector] public float clock;
@@ -105,6 +120,24 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
     private void Update()
     {
+
+        ///////////////////// - Pattern 0 - /////////////////////
+
+        if (currentPattern == 0)
+        {
+            if (GameObject.FindGameObjectWithTag("Speech Bubble") == null)
+            {
+                speechBubbleSpawned = false;
+            }
+
+            if (!speechBubbleSpawned)
+            {
+                InstantiateSpeech(speechBubble1, speechOffset);
+                speechBubbleSpawned = true;
+            }
+        }
+
+        /////////////////////////////////////////////////////////
 
         ///////////////////// - Pattern 1 - /////////////////////
 
@@ -234,6 +267,26 @@ public class Boss2Melee_Patterns : MonoBehaviour
         }
 
         /////////////////////////////////////////////////////////
+
+        ///////////////////// - Pattern 4 - /////////////////////
+
+        if (currentPattern == 4)
+        {
+            transform.position = basePos.transform.position;
+
+            if (GameObject.FindGameObjectWithTag("Speech Bubble") == null)
+            {
+                speechBubbleSpawned = false;
+            }
+
+            if (!speechBubbleSpawned)
+            {
+                InstantiateSpeech(speechBubble2, speechOffset);
+                speechBubbleSpawned = true;
+            }
+        }
+
+        /////////////////////////////////////////////////////////
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -250,5 +303,10 @@ public class Boss2Melee_Patterns : MonoBehaviour
         {
             Instantiate(shockWave, new Vector2(transform.position.x, transform.position.y - 5), Quaternion.identity);
         }
+    }
+
+    private void InstantiateSpeech(GameObject speechBubble, float offset)
+    {
+        Instantiate(speechBubble, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), Quaternion.identity, transform);
     }
 }

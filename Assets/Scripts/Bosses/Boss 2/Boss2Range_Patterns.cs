@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 /// <summary>
 /// 
@@ -34,10 +33,21 @@ public class Boss2Range_Patterns : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject bossBar;
     [SerializeField] GameObject meleeBoss;
+    [SerializeField] GameObject sceneLoadTrigger;
+    [SerializeField] GameObject hud;
 
     [Header("Settings"), Space(10)]
 
     [SerializeField, Range(0,4)] public int currentPattern;
+
+    [Header("Speech Bubbles"), Space(10)]
+
+    [SerializeField] GameObject speechBubble1;
+    [SerializeField] GameObject speechBubble2;
+
+    [SerializeField] float speechOffset;
+
+    bool speechBubbleSpawned;
 
     [Header("Pattern 1"), Space(10)]
 
@@ -77,6 +87,12 @@ public class Boss2Range_Patterns : MonoBehaviour
     int pattern3Count;
     int targetIndex;
 
+    [Header("Pattern 4"), Space(10)]
+
+    [SerializeField] GameObject basePos;
+
+    [Space(10)]
+
     [Header("Private"), Space(10)]
 
     [HideInInspector] public float clock;
@@ -86,24 +102,37 @@ public class Boss2Range_Patterns : MonoBehaviour
         pattern3BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 2 Range Pattern 3 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         player = GameObject.FindGameObjectWithTag("Player");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
+        hud = GameObject.Find("HUD");
+
+        bossBar = hud.transform.Find("Boss Bar").gameObject;
+        Debug.Log(bossBar);
+
+        sceneLoadTrigger.SetActive(false);
     }
 
     private void Update()
     {
 
+
         ///////////////////// - Pattern 0 - /////////////////////
 
         if (currentPattern == 0)
         {
-            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
-
-            if (Input.GetKeyDown(KeyCode.F))
+            if (GameObject.FindGameObjectWithTag("Speech Bubble") == null)
             {
-                currentPattern = 1;
-                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 1;
+                speechBubbleSpawned = false;
+            }
+
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(7);
+
+            if (!speechBubbleSpawned)
+            {
+                InstantiateSpeech(speechBubble1, speechOffset);
+                speechBubbleSpawned = true;
             }
         }
+
+        /////////////////////////////////////////////////////////
 
         ///////////////////// - Pattern 1 - /////////////////////
 
@@ -243,16 +272,56 @@ public class Boss2Range_Patterns : MonoBehaviour
 
             if (pattern3Count == maxPattern3Count)
             {
-                currentPattern = 1;
+                currentPattern = 4;
                 clock = 0f;
                 pattern3Count = 0;
                 targetIndex = 0;
-                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 1;
+                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 4;
                 meleeBoss.GetComponent<Boss2Melee_Patterns>().clock = 0f;
             }
 
         }
 
         /////////////////////////////////////////////////////////
+
+        ///////////////////// - Pattern 4 - /////////////////////
+
+        if (currentPattern == 4)
+        {
+            transform.position = basePos.transform.position;
+
+            if (GameObject.FindGameObjectWithTag("Speech Bubble") == null)
+            {
+                speechBubbleSpawned = false;
+            }
+
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(7);
+
+            if (!speechBubbleSpawned)
+            {
+                InstantiateSpeech(speechBubble2, speechOffset);
+                speechBubbleSpawned = true;
+            }
+        }
+
+        /////////////////////////////////////////////////////////
+
+        ///////////////////// - Pattern 5 - /////////////////////
+
+        if (currentPattern == 5)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+
+            sceneLoadTrigger.SetActive(true);
+
+            Destroy(transform.parent.gameObject);
+        }
+
+        /////////////////////////////////////////////////////////
+    }
+
+    private void InstantiateSpeech(GameObject speechBubble, float offset)
+    {
+        Instantiate(speechBubble, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), Quaternion.identity, transform);
     }
 }

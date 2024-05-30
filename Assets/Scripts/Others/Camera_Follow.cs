@@ -50,6 +50,12 @@ public class Camera_Follow : MonoBehaviour
     [SerializeField] float timeOffset6;
     [SerializeField] Vector3 posOffset6;
     [SerializeField, Range(1, 50)] float cameraSize6;
+    
+    [Header("Camera 7")]
+
+    [SerializeField] float timeOffset7;
+    [SerializeField] Vector3 posOffset7;
+    [SerializeField, Range(1, 50)] float cameraSize7;
 
     [Header("Private")]
 
@@ -148,6 +154,20 @@ public class Camera_Follow : MonoBehaviour
             t += 2 * Time.deltaTime;
             gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, cameraSize6, t);
             hud.SetActive(true);
+        }
+        else if (cameraBehavior == 7)
+        {
+            player.GetComponent<Player_Health>().enabled = false;
+            player.GetComponent<Player_Movement>().enabled = false;
+            player.GetComponent<Player_Shooting>().enabled = false;
+
+            target = (boss.transform.position + boss2.transform.position) / 2f;
+            timeOffset = timeOffset7;
+            posOffset = posOffset7;
+            float t = 0;
+            t += 2 * Time.deltaTime;
+            gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, cameraSize7, t);
+            hud.SetActive(false);
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, target + posOffset, ref velocity, timeOffset);

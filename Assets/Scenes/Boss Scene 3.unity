@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 1d2e00dacddff0e43a2dafef58dcb91c, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -131,9 +131,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 390041823330543907, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
+      propertyPath: scene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 709024602419480441, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 177.2
+      value: 68.2
       objectReference: {fileID: 0}
     - target: {fileID: 709024602419480441, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -180,6 +184,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
+--- !u!1 &217302700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6130420819047398278, guid: 815edaa5e419e104bbc9cc8bc8578bd0, type: 3}
+  m_PrefabInstance: {fileID: 116376377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &373184737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,6 +254,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: speechOffset
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: speechBubble1
+      value: 
+      objectReference: {fileID: 2395488159013917376, guid: d7633e6aabf411c45bf31bc16146caa3, type: 3}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: speechBubble2
+      value: 
+      objectReference: {fileID: 2395488159013917376, guid: 2716e484b7dd28b409ca442c8aafc601, type: 3}
+    - target: {fileID: 590182387483648355, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: sceneLoadTrigger
+      value: 
+      objectReference: {fileID: 217302700}
+    - target: {fileID: 660535281885328815, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -288,6 +321,10 @@ PrefabInstance:
     - target: {fileID: 1270882398771666462, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
       propertyPath: m_Name
       value: Boss 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046870486594682499, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

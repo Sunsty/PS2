@@ -589,6 +589,9 @@ MonoBehaviour:
   timeOffset6: 0.1
   posOffset6: {x: 0, y: 0, z: -10}
   cameraSize6: 42
+  timeOffset7: 0.1
+  posOffset7: {x: 0, y: 12, z: -10}
+  cameraSize7: 26
 --- !u!1 &643714577
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +959,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243524177}
   m_CullTransparentMesh: 1
+--- !u!1001 &1299931701
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.101997375
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 39.01066
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 756857263325302611, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270882398771666462, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Name
+      value: Boss 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092287963947606583, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Name
+      value: Base Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945960706397578815, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
+      propertyPath: m_Name
+      value: Base Melee
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57f72b423ada61d419d95d0d9f40fce8, type: 3}
 --- !u!1 &1473212749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,3 +1480,4 @@ SceneRoots:
   - {fileID: 643714581}
   - {fileID: 5064284689741087953}
   - {fileID: 1879358883}
+  - {fileID: 1299931701}

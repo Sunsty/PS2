@@ -281,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossBar: {fileID: 0}
   maxHealth: 5000
+  patternToGo: 5
 --- !u!114 &3171205499006583560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +297,7 @@ MonoBehaviour:
   rb: {fileID: 8814395086714759480}
   mainCamera: {fileID: 0}
   bossBar: {fileID: 0}
+  sceneLoadTrigger: {fileID: 0}
   contactDmg: 25
   currentPattern: 0
   speechBubble1: {fileID: 6329001964622906466, guid: 95b2bc8b96ca3504880a67f9257d02f3, type: 3}
