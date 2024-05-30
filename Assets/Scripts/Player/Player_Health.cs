@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
@@ -25,10 +26,10 @@ public class Player_Health : MonoBehaviour
     float counterIFrames;
     bool canTakeDmg = true;
     bool tookDmg;
-    private SpriteRenderer sprite;
-    private bool initIFrames;
-    private float clockDashIFrames;
-    private float dashIFramesLenght;
+    SpriteRenderer sprite;
+    bool initIFrames;
+    float clockDashIFrames;
+    float dashIFramesLenght;
 
     private void Start()
     {
@@ -118,8 +119,8 @@ public class Player_Health : MonoBehaviour
 
         if (health <= 0f)
         {
-            health = 0f;
-            Debug.Log("Dead");
+            Heal();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         ////////////////////////////////////////////////////////////
@@ -140,5 +141,22 @@ public class Player_Health : MonoBehaviour
     {
         dashIFramesLenght = duration;
         initIFrames = true;
+    }
+
+    public bool IsFullLife()
+    {
+        if (health == maxHealth)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Heal()
+    {
+        health = maxHealth;
     }
 }

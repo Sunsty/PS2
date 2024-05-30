@@ -24,11 +24,12 @@ public class Boss_Health : MonoBehaviour
         health = maxHealth;
         healthBar = GameObject.FindGameObjectWithTag("Boss Bar").GetComponentInChildren<Image>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
+        bossBar = GameObject.Find("Boss Bar");
     }
 
     private void Update()
-    {
+    {        
+
         ////////////////////////////////////////////////////////////
 
         if (health > maxHealth)
@@ -39,10 +40,8 @@ public class Boss_Health : MonoBehaviour
         if (health <= 0f)
         {
             health = 0f;
-            Debug.Log("Congrats !");
-            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+            GetComponent<Boss1_Patterns>().currentPattern = 5;
             bossBar.SetActive(false);
-            Destroy(gameObject);
         }
 
         ////////////////////////////////////////////////////////////

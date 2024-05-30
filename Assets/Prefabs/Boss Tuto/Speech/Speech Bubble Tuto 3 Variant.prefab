@@ -14,19 +14,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 33775658098320233, guid: d609afb100b1526428ba31a714edf409, type: 3}
       propertyPath: texts.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 33775658098320233, guid: d609afb100b1526428ba31a714edf409, type: 3}
       propertyPath: texts.Array.data[0]
-      value: Bravo !
-      objectReference: {fileID: 0}
-    - target: {fileID: 33775658098320233, guid: d609afb100b1526428ba31a714edf409, type: 3}
-      propertyPath: texts.Array.data[1]
       value: "Vous pouvez vous \xE9lancer avec [Maj Gauche]"
       objectReference: {fileID: 0}
     - target: {fileID: 33775658098320233, guid: d609afb100b1526428ba31a714edf409, type: 3}
-      propertyPath: texts.Array.data[2]
+      propertyPath: texts.Array.data[1]
       value: "Utilisez cette \xE9lan pour traverser les murs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 33775658098320233, guid: d609afb100b1526428ba31a714edf409, type: 3}
+      propertyPath: texts.Array.data[2]
+      value: X
       objectReference: {fileID: 0}
     - target: {fileID: 33775658098320233, guid: d609afb100b1526428ba31a714edf409, type: 3}
       propertyPath: texts.Array.data[3]

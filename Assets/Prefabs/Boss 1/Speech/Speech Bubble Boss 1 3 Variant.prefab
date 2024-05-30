@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1968914871619290547
+--- !u!1001 &1240717479202768892
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -70,11 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -15.5
+      value: 113.28939
       objectReference: {fileID: 0}
     - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.49
+      value: -6.522604
       objectReference: {fileID: 0}
     - target: {fileID: 2721474652518302911, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -89,12 +89,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
-      propertyPath: fontSize
-      value: 2.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: patternToGo
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: texts.Array.size
@@ -102,42 +98,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: texts.Array.data[0]
-      value: Vous pouvez bouger avec [Q] et [D]
+      value: Ahahah !
       objectReference: {fileID: 0}
     - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: texts.Array.data[1]
-      value: Et Sauter/Voler avec [Espace]
+      value: Je suis vaincu
       objectReference: {fileID: 0}
     - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: texts.Array.data[2]
-      value: Esquivez les murs qui approchent
+      value: "CA c'\xE9tait du combat"
       objectReference: {fileID: 0}
     - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: texts.Array.data[3]
       value: X
       objectReference: {fileID: 0}
-    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
-      propertyPath: texts.Array.data[4]
-      value: X
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
-      propertyPath: texts.Array.data[5]
-      value: X
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
-      propertyPath: texts.Array.data[6]
-      value: X
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039540199185147881, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
-      propertyPath: texts.Array.data[7]
-      value: X
-      objectReference: {fileID: 0}
     - target: {fileID: 5990052755153365093, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
       propertyPath: m_Name
-      value: Speech Bubble Tuto 1 Variant
+      value: Speech Bubble Boss 1 3 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990052755153365093, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8253695932969055610}
   m_SourcePrefab: {fileID: 100100000, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+--- !u!1 &4762302377279352729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990052755153365093, guid: ba4363616abf4454089abb939a0e95b0, type: 3}
+  m_PrefabInstance: {fileID: 1240717479202768892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &8253695932969055610
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4762302377279352729}
+  m_Mesh: {fileID: 0}

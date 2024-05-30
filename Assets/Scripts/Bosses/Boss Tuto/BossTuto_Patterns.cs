@@ -31,13 +31,17 @@ public class BossTuto_Patterns : MonoBehaviour
 
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject bossBar;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject respawn;
+    [SerializeField] GameObject sceneLoadTrigger;
 
     [Header("Settings")]
 
-    [SerializeField, Range(1, 8)] public int currentPattern;
+    [SerializeField, Range(0, 8)] public int currentPattern;
 
     [Header("Speech Bubbles"), Space(10)]
 
+    [SerializeField] GameObject speechBubble0;
     [SerializeField] GameObject speechBubble1;
     [SerializeField] GameObject speechBubble2;
     [SerializeField] GameObject speechBubble3;
@@ -96,6 +100,7 @@ public class BossTuto_Patterns : MonoBehaviour
     private void Start()
     {
         bossBar = GameObject.Find("Boss Bar");
+        player = GameObject.Find("Player");
 
         bossBar.SetActive(false);
 
@@ -109,17 +114,83 @@ public class BossTuto_Patterns : MonoBehaviour
         spawnPatterns[3] = spawnPattern4;
         spawnPatterns[4] = spawnPattern5;
         spawnPatterns[5] = spawnPattern6;
+
+        sceneLoadTrigger.SetActive(false);
     }
 
 
     private void Update()
     {
+        if (!player.GetComponent<Player_Health>().IsFullLife() && currentPattern == 2)
+        {
+            player.GetComponent<Player_Health>().Heal();
+            GameObject[] activeWalls = GameObject.FindGameObjectsWithTag("Boss Tuto Pattern 1 Wall");
+            foreach (GameObject wall in activeWalls)
+            {
+                Destroy(wall);
+            }
+            currentPattern--;
+
+            player.transform.position = respawn.transform.position;
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+
+        if (!player.GetComponent<Player_Health>().IsFullLife() && currentPattern == 4)
+        {
+            player.GetComponent<Player_Health>().Heal();
+            foreach (GameObject target in activeAimTargets)
+            {
+                Destroy(target);
+            }
+            currentPattern--;
+
+            player.transform.position = respawn.transform.position;
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+
+        if (!player.GetComponent<Player_Health>().IsFullLife() && currentPattern == 6)
+        {
+            player.GetComponent<Player_Health>().Heal();
+            GameObject[] activeWalls = GameObject.FindGameObjectsWithTag("Boss Tuto Pattern 3 Wall");
+            foreach (GameObject wall in activeWalls)
+            {
+                Destroy(wall);
+            }
+            currentPattern--;
+
+            player.transform.position = respawn.transform.position;
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+
         bossBar.SetActive(false);
 
+        ///////////////////// - Pattern Cine 0 - /////////////////////
+
+        if (currentPattern == 0)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (!speechBubbleSpawned)
+            {
+                InstantiateSpeech(speechBubble0, speechOffset);
+                speechBubbleSpawned = true;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
+        
         ///////////////////// - Pattern Cine 1 - /////////////////////
 
         if (currentPattern == 1)
         {
+            if (GameObject.FindGameObjectWithTag("Speech Bubble") ==  null)
+            {
+                speechBubbleSpawned = false;
+            }
+
+            clock = 0f;
+            wallCountPattern1 = 0;
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
             if (!speechBubbleSpawned)
@@ -183,6 +254,9 @@ public class BossTuto_Patterns : MonoBehaviour
 
         if (currentPattern == 3)
         {
+            clock = 0f;
+            wavesCount = 0;
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
             if (!speechBubbleSpawned)
@@ -228,6 +302,9 @@ public class BossTuto_Patterns : MonoBehaviour
 
         if (currentPattern == 5)
         {
+            clock = 0f;
+            wallCountPattern3 = 0;
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
 
             if (!speechBubbleSpawned)
@@ -299,6 +376,8 @@ public class BossTuto_Patterns : MonoBehaviour
 
         if (currentPattern == 8)
         {
+            sceneLoadTrigger.SetActive(true);
+
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
             this.enabled = false;
         }

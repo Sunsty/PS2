@@ -99,7 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   bossBar: {fileID: 0}
-  currentPattern: 1
+  player: {fileID: 0}
+  respawn: {fileID: 4559022093713976062}
+  currentPattern: 0
+  speechBubble0: {fileID: 9100230012282730363, guid: 047659336b7b3d549b76395a18d73833, type: 3}
   speechBubble1: {fileID: 5220248775169027542, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
   speechBubble2: {fileID: 1632278797250079973, guid: d609afb100b1526428ba31a714edf409, type: 3}
   speechBubble3: {fileID: 47921733645433483, guid: e6ec5a8c231e63247bd703d3f30727a5, type: 3}
@@ -187,6 +190,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2832021030512485997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4559022093713976062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9002719016961146000}
+  m_Layer: 0
+  m_Name: Respawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9002719016961146000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559022093713976062}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 25.316734, y: 3.8265533, z: -0.13384849}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8891240387793101849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5096448779063774072
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +283,7 @@ Transform:
   m_Children:
   - {fileID: 285706605076830127}
   - {fileID: 2832021030512485997}
+  - {fileID: 9002719016961146000}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6651003810673422886

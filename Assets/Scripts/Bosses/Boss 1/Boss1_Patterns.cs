@@ -39,16 +39,18 @@ public class Boss1_Patterns : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject bossBar;
+    [SerializeField] GameObject sceneLoadTrigger;
 
     [Header("Settings"), Space(10)]
 
     [SerializeField] float contactDmg;
-    [SerializeField, Range(0, 4)] public int currentPattern;
+    [SerializeField, Range(0, 6)] public int currentPattern;
 
     [Header("Speech Bubbles"), Space(10)]
 
     [SerializeField] GameObject speechBubble1;
     [SerializeField] GameObject speechBubble2;
+    [SerializeField] GameObject speechBubble3;
 
     [SerializeField] float speechOffset;
 
@@ -130,11 +132,18 @@ public class Boss1_Patterns : MonoBehaviour
         pattern1BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 1 Pattern 1 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         pattern2BossWaypoints = GameObject.FindGameObjectsWithTag("Boss 1 Pattern 2 Waypoint").OrderBy(m => m.gameObject.transform.GetSiblingIndex()).ToArray();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        bossBar = GameObject.FindGameObjectWithTag("Boss Bar");
+        bossBar = GameObject.Find("Boss Bar");
+
+        sceneLoadTrigger.SetActive(false);
     }
 
 
     private void FixedUpdate()
+    {
+
+    }
+
+    private void Update()
     {
         ///////////////////// - Pattern 0 - /////////////////////
 
@@ -153,11 +162,12 @@ public class Boss1_Patterns : MonoBehaviour
 
         if (currentPattern == 1)
         {
+
             speechBubbleSpawned = false;
 
-            bossBar.SetActive(true);
-
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
+
+            bossBar.SetActive(true);
 
             if (clock <= 0)
             {
@@ -166,7 +176,7 @@ public class Boss1_Patterns : MonoBehaviour
 
             if (clock > 0)
             {
-                clock -= Time.fixedDeltaTime;
+                clock -= Time.deltaTime;
 
                 if (clock < 0)
                 {
@@ -217,7 +227,7 @@ public class Boss1_Patterns : MonoBehaviour
 
             if (clock > 0)
             {
-                clock -= Time.fixedDeltaTime;
+                clock -= Time.deltaTime;
 
                 if (clock < 0)
                 {
@@ -227,7 +237,7 @@ public class Boss1_Patterns : MonoBehaviour
                 }
             }
 
-            if ((Vector2.Distance(transform.position, pattern2BossWaypoints[1].transform.position) <= 15f && targetIndex == 1 )|| ( Vector2.Distance(transform.position, pattern2BossWaypoints[3].transform.position) <= 15f && targetIndex == 3))
+            if ((Vector2.Distance(transform.position, pattern2BossWaypoints[1].transform.position) <= 15f && targetIndex == 1) || (Vector2.Distance(transform.position, pattern2BossWaypoints[3].transform.position) <= 15f && targetIndex == 3))
             {
                 clock = dashCdPattern2;
                 targetIndex += 1;
@@ -254,7 +264,7 @@ public class Boss1_Patterns : MonoBehaviour
         }
 
         /////////////////////////////////////////////////////////
-        
+
         ///////////////////// - Pattern 3 - /////////////////////
 
         if (currentPattern == 3)
@@ -303,10 +313,35 @@ public class Boss1_Patterns : MonoBehaviour
         }
 
         /////////////////////////////////////////////////////////
-    }
 
-    private void Update()
-    {
+        ///////////////////// - Pattern 5 - /////////////////////
+
+        if (currentPattern == 5)
+        {
+            if (GameObject.FindGameObjectWithTag("Speech Bubble") == null)
+            {
+                speechBubbleSpawned = false;
+            }
+
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
+
+            if (!speechBubbleSpawned)
+            {
+                InstantiateSpeech(speechBubble3, speechOffset);
+                speechBubbleSpawned = true;
+            }
+        }
+
+        /////////////////////////////////////////////////////////
+        
+
+
+
+
+
+
+
+
 
         ///////////////////// - Pattern 1 - /////////////////////
 
@@ -386,7 +421,7 @@ public class Boss1_Patterns : MonoBehaviour
 
         ///////////////////// - Cinematic - /////////////////////
 
-        if (currentPattern == 4)
+        if (currentPattern == 4 || currentPattern == 5)
         {
             float distance = Vector2.Distance(transform.position, cinematicBossWaypoint.transform.position);
             transform.position = (Vector2.MoveTowards(transform.position, cinematicBossWaypoint.transform.position, normalSpeedPattern3 * Time.deltaTime * distance));
@@ -394,6 +429,17 @@ public class Boss1_Patterns : MonoBehaviour
 
         /////////////////////////////////////////////////////////
 
+        //////////////////// - Pattern Free Cam - ////////////////////
+
+        if (currentPattern == 6)
+        {
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+            sceneLoadTrigger.SetActive(true);
+
+            this.enabled = false;
+        }
+
+        //////////////////////////////////////////////////////////////
         if (enraged)
         {
             dashCdPattern1 = dashCdPattern1Enraged;

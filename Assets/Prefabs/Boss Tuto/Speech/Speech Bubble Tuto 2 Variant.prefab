@@ -102,23 +102,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
       propertyPath: texts.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
       propertyPath: texts.Array.data[0]
-      value: "Bien jou\xE9-e !"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
-      propertyPath: texts.Array.data[1]
       value: Vous pouvez viser avec la souris
       objectReference: {fileID: 0}
     - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
+      propertyPath: texts.Array.data[1]
+      value: Et tirer en maintenant [Clic Gauche]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
       propertyPath: texts.Array.data[2]
-      value: Et tirer avec [Clic Gauche]
+      value: Detruisez les cibles avant qu'elles ne vous atteignent
       objectReference: {fileID: 0}
     - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
       propertyPath: texts.Array.data[3]
-      value: Detruisez les cibles avant qu'elles ne vous atteignent
+      value: X
       objectReference: {fileID: 0}
     - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
       propertyPath: texts.Array.data[4]

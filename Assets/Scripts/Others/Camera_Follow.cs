@@ -67,6 +67,10 @@ public class Camera_Follow : MonoBehaviour
 
         if (cameraBehavior == 1 && boss != null)
         {
+            player.GetComponent<Player_Health>().enabled = true;
+            player.GetComponent<Player_Movement>().enabled = true;
+            player.GetComponent<Player_Shooting>().enabled = true;
+
             target = (player.transform.position + boss.transform.position) / 2f;
             timeOffset = timeOffset1;
             posOffset = posOffset1;
@@ -77,6 +81,10 @@ public class Camera_Follow : MonoBehaviour
         }
         else if (cameraBehavior == 2)
         {
+            player.GetComponent<Player_Health>().enabled = true;
+            player.GetComponent<Player_Movement>().enabled = true;
+            player.GetComponent<Player_Shooting>().enabled = true;
+
             target = player.transform.position;
             timeOffset = timeOffset2;
             posOffset = posOffset2;
@@ -87,6 +95,10 @@ public class Camera_Follow : MonoBehaviour
         }
         else if (cameraBehavior == 3)
         {
+            player.GetComponent<Player_Health>().enabled = true;
+            player.GetComponent<Player_Movement>().enabled = true;
+            player.GetComponent<Player_Shooting>().enabled = true;
+
             target = boss.transform.position;
             timeOffset = timeOffset3;
             posOffset = posOffset3;
@@ -97,6 +109,10 @@ public class Camera_Follow : MonoBehaviour
         }
         else if (cameraBehavior == 4)
         {
+            player.GetComponent<Player_Health>().enabled = false;
+            player.GetComponent<Player_Movement>().enabled = false;
+            player.GetComponent<Player_Shooting>().enabled = false;
+
             target = player.transform.position;
             timeOffset = timeOffset4;
             posOffset = posOffset4;
@@ -107,6 +123,10 @@ public class Camera_Follow : MonoBehaviour
         }
         else if (cameraBehavior == 5)
         {
+            player.GetComponent<Player_Health>().enabled = false;
+            player.GetComponent<Player_Movement>().enabled = false;
+            player.GetComponent<Player_Shooting>().enabled = false;
+
             target = boss.transform.position;
             timeOffset = timeOffset5;
             posOffset = posOffset5;
@@ -117,6 +137,10 @@ public class Camera_Follow : MonoBehaviour
         }
         else if (cameraBehavior == 6)
         {
+            player.GetComponent<Player_Health>().enabled = true;
+            player.GetComponent<Player_Movement>().enabled = true;
+            player.GetComponent<Player_Shooting>().enabled = true;
+
             target = (player.transform.position + boss2.transform.position) / 2f;
             timeOffset = timeOffset6;
             posOffset = posOffset6;
