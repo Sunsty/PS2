@@ -8,6 +8,7 @@ public class Player_Shooting : MonoBehaviour
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform firePoint;
+    [SerializeField] Animator animator;
 
     [Header("Settings")]
 
@@ -23,6 +24,10 @@ public class Player_Shooting : MonoBehaviour
     float shootingCounter;
     bool wantsToShot;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -36,10 +41,12 @@ public class Player_Shooting : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             wantsToShot = true;
+            animator.SetBool("IsShooting", true);
         }
         else
         {
             wantsToShot = false;
+            animator.SetBool("IsShooting", false);
         }
 
         if (isShooting && wantsToShot)

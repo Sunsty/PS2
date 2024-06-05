@@ -49,8 +49,9 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] Transform groundCheckLeft;
     [SerializeField] Transform groundCheckRight;
     [SerializeField] Image fuelBar;
-    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Player_Health player_Health;
+    [SerializeField] Animator animator;
 
     [Header("Settings")]
 
@@ -88,14 +89,19 @@ public class Player_Movement : MonoBehaviour
     float tempForce;
     bool clampOverwrite;
     float flyingFuel;
-    private bool wantsDown;
-    private bool wentThrough;
-    private bool hasDown;
-    private float downCounter;
+    bool wantsDown;
+    bool wentThrough;
+    bool hasDown;
+    float downCounter;
     float tempClamp;
-    private bool hasDashCd = true;
-    private bool hasDashed;
-    private float dashCdCounter;
+    bool hasDashCd = true;
+    bool hasDashed;
+    float dashCdCounter;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();    
+    }
 
     private void FixedUpdate()
     {
@@ -128,10 +134,12 @@ public class Player_Movement : MonoBehaviour
         if (isFlying && canFly && flyingFuel < 0f)
         {
             tempClamp = glideCoef;
+            animator.SetBool("IsGliding", true);
         }
         else
         {
             tempClamp = 1;
+            animator.SetBool("IsGliding", false);
         }
 
         ////////////////////////////////////////////////////////////
@@ -299,10 +307,12 @@ public class Player_Movement : MonoBehaviour
         if (rb.velocity.y == 0)
         {
             isGrounded = true;
+            animator.SetBool("IsGrounded", true);
         }
         else
         {
             isGrounded = false;
+            animator.SetBool("IsGrounded", false);
         }
 
         ////////////////////////////////////////////////////////////
@@ -383,6 +393,36 @@ public class Player_Movement : MonoBehaviour
             {
                 wentThrough = false;
             }
+        }
+
+        if (rb.velocity.y < -0.1f)
+        {
+            animator.SetBool("IsFalling", true);
+        }
+        else
+        {
+            animator.SetBool("IsFalling", false);
+        }
+
+        Flip(rb.velocity.x);
+    }
+
+    void Flip(float _velocity)
+    {
+        if (_velocity > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+            animator.SetBool("IsRunning", true);
+
+        }
+        else if (_velocity < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+            animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
         }
     }
 }
