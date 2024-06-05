@@ -186,5 +186,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texts: []
   waitTime: 2.5
-  fontSize: 2.6
+  fontSize: 5.5
   patternToGo: 0

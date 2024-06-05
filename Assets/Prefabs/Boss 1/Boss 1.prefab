@@ -138,8 +138,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.4941, y: 9.4941, z: 9.4941}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.58, y: 2.58, z: 2.58}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1824381351723022032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -184,8 +184,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9622642, g: 0.6170397, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 497e905550dfe3f499bf31557dfc893f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -227,18 +227,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.049712777}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.77, y: 6.51}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.8393764, y: 6.5347013}
   m_EdgeRadius: 0
 --- !u!50 &8814395086714759480
 Rigidbody2D:
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossBar: {fileID: 0}
+  hud: {fileID: 0}
   maxHealth: 5000
   patternToGo: 5
 --- !u!114 &3171205499006583560
@@ -303,14 +304,14 @@ MonoBehaviour:
   speechBubble1: {fileID: 6329001964622906466, guid: 95b2bc8b96ca3504880a67f9257d02f3, type: 3}
   speechBubble2: {fileID: 7754470245505287898, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
   speechBubble3: {fileID: 4762302377279352729, guid: 791afc70a79942b45a90807a0c85c0b5, type: 3}
-  speechOffset: 30
+  speechOffset: 15
   pattern1BossWaypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   dashCdPattern1: 5
-  dashSpeedPattern1: 2
+  dashSpeedPattern1: 1.5
   normalSpeedPattern1: 1
   maxPattern1Count: 4
   fireBall: {fileID: 8525503435363123609, guid: a0dfd78798f756f43850e7e0a766b3ac, type: 3}
@@ -320,28 +321,28 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   dashCdPattern2: 7
-  dashSpeedPattern2: 3
+  dashSpeedPattern2: 1.8
   normalSpeedPattern2: 1
   maxPattern2Count: 4
   circleWaveProjectile: {fileID: 3685789619600078298, guid: cf3bd19fb34e0d24186058ce6801d10d, type: 3}
   pattern3BossWaypoint: {fileID: 8479699929504512719}
   normalSpeedPattern3: 5
   wavesCd: 3
-  baseNbrProjectile: 20
+  baseNbrProjectile: 15
   pattern3Duration: 30
   cinematicBossWaypoint: {fileID: 2202563412980781534}
   secondPhaseHealth: 1500
   dashCdPattern1Enraged: 3
-  dashSpeedPattern1Enraged: 2.2
+  dashSpeedPattern1Enraged: 1.8
   normalSpeedPattern1Enraged: 1.2
   maxPattern1CountEnraged: 6
   dashCdPattern2Enraged: 5
-  dashSpeedPattern2Enraged: 3.2
+  dashSpeedPattern2Enraged: 2
   normalSpeedPattern2Enraged: 1.2
   maxPattern2CountEnraged: 4
   normalSpeedPattern3Enraged: 5
   wavesCdEnraged: 2.2
-  baseNbrProjectileEnraged: 22
+  baseNbrProjectileEnraged: 18
   pattern3DurationEnraged: 30
 --- !u!1 &8479699929504512719
 GameObject:

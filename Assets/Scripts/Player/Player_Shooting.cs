@@ -9,6 +9,7 @@ public class Player_Shooting : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator animator;
+    [SerializeField] GameObject arm;
 
     [Header("Settings")]
 
@@ -38,15 +39,19 @@ public class Player_Shooting : MonoBehaviour
 
         firePoint.rotation = Quaternion.Euler(0, 0, lookAngle);
 
+        arm.transform.rotation = Quaternion.Euler(0,0,lookAngle + 90f);
+
         if (Input.GetMouseButton(0))
         {
             wantsToShot = true;
             animator.SetBool("IsShooting", true);
+            arm.SetActive(true);
         }
         else
         {
             wantsToShot = false;
             animator.SetBool("IsShooting", false);
+            arm.SetActive(false);
         }
 
         if (isShooting && wantsToShot)

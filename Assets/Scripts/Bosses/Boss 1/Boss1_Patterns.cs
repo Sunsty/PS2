@@ -291,6 +291,12 @@ public class Boss1_Patterns : MonoBehaviour
         if (health <= secondPhaseHealth && !enraged)
         {
             currentPattern = 4;
+            clock = 0f;
+            clockWaves = 0f;
+            pattern1Count = 0;
+            pattern2Count = 0;
+            pattern3Count = 0;
+            targetIndex = 0;
             enraged = true;
         }
 

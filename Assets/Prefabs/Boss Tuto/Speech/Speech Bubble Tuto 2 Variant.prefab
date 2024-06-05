@@ -93,10 +93,6 @@ PrefabInstance:
       value: Speech Bubble Tuto 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
-      propertyPath: fontSize
-      value: 2.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6819284058349068890, guid: 7a2a2cc983e521b4a849b8229759bd51, type: 3}
       propertyPath: patternToGo
       value: 4
       objectReference: {fileID: 0}

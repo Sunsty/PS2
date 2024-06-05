@@ -774,10 +774,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5688072327864413072, guid: 50b3728dccdd4ca4b9dd5b21ad83e84c, type: 3}
-      propertyPath: projectileDmg
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5994433438037744933, guid: 50b3728dccdd4ca4b9dd5b21ad83e84c, type: 3}
       propertyPath: fuelBar
       value: 
