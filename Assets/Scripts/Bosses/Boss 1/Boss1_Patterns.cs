@@ -432,6 +432,7 @@ public class Boss1_Patterns : MonoBehaviour
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
             sceneLoadTrigger.SetActive(true);
             this.enabled = false;
+            Destroy(gameObject);
         }
 
         //////////////////////////////////////////////////////////////

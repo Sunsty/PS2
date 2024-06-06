@@ -301,7 +301,7 @@ public class Boss2Melee_Patterns : MonoBehaviour
     {
         if (collision.gameObject.tag == "Environment" && currentPattern == 3)
         {
-            Instantiate(shockWave, new Vector2(transform.position.x, transform.position.y - 5.5f), Quaternion.identity);
+            Instantiate(shockWave, new Vector2(transform.position.x, transform.position.y - 6f), Quaternion.identity);
         }
     }
 
