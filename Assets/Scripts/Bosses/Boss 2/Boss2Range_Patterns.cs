@@ -106,8 +106,6 @@ public class Boss2Range_Patterns : MonoBehaviour
 
         bossBar = hud.transform.Find("Boss Bar").gameObject;
         Debug.Log(bossBar);
-
-        sceneLoadTrigger.SetActive(false);
     }
 
     private void Update()
@@ -196,6 +194,7 @@ public class Boss2Range_Patterns : MonoBehaviour
                     currentPattern++;
                     meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 3;
                     meleeBoss.GetComponent<Boss2Melee_Patterns>().clock = 0f;
+                    meleeBoss.GetComponent<Boss2Melee_Patterns>().targetIndex = 0;
                 }
             }
         }
@@ -272,11 +271,11 @@ public class Boss2Range_Patterns : MonoBehaviour
 
             if (pattern3Count == maxPattern3Count)
             {
-                currentPattern = 4;
+                currentPattern = 1;
                 clock = 0f;
                 pattern3Count = 0;
                 targetIndex = 0;
-                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 4;
+                meleeBoss.GetComponent<Boss2Melee_Patterns>().currentPattern = 1;
                 meleeBoss.GetComponent<Boss2Melee_Patterns>().clock = 0f;
             }
 
@@ -310,9 +309,9 @@ public class Boss2Range_Patterns : MonoBehaviour
 
         if (currentPattern == 5)
         {
-            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(2);
+            mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(8);
 
-            sceneLoadTrigger.SetActive(true);
+            GameObject.FindGameObjectWithTag("Traveling").GetComponent<Traveling_Behavior>().active = true;
 
             Destroy(transform.parent.gameObject);
         }

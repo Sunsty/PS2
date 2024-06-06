@@ -304,7 +304,7 @@ MonoBehaviour:
   speechBubble1: {fileID: 6329001964622906466, guid: 95b2bc8b96ca3504880a67f9257d02f3, type: 3}
   speechBubble2: {fileID: 7754470245505287898, guid: b6e9d5d1e78a9464bb776c2ddf6e20a8, type: 3}
   speechBubble3: {fileID: 4762302377279352729, guid: 791afc70a79942b45a90807a0c85c0b5, type: 3}
-  speechOffset: 15
+  speechOffset: 20
   pattern1BossWaypoints:
   - {fileID: 0}
   - {fileID: 0}

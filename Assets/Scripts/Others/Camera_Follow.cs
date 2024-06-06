@@ -9,11 +9,12 @@ public class Camera_Follow : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject boss;
     [SerializeField] GameObject boss2;
+    [SerializeField] GameObject traveling;
     [SerializeField] GameObject hud;
 
     [Header("Settings")]
 
-    [SerializeField, Range(1,5)] int cameraBehavior;
+    [SerializeField, Range(1,8)] int cameraBehavior;
 
     [Header("Camera 1")]
 
@@ -56,6 +57,12 @@ public class Camera_Follow : MonoBehaviour
     [SerializeField] float timeOffset7;
     [SerializeField] Vector3 posOffset7;
     [SerializeField, Range(1, 50)] float cameraSize7;
+    
+    [Header("Camera 8")]
+
+    [SerializeField] float timeOffset8;
+    [SerializeField] Vector3 posOffset8;
+    [SerializeField, Range(1, 150)] float cameraSize8;
 
     [Header("Private")]
 
@@ -69,6 +76,7 @@ public class Camera_Follow : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         boss = GameObject.FindGameObjectWithTag("Boss");
         boss2 = GameObject.FindGameObjectWithTag("Boss2");
+        traveling = GameObject.FindGameObjectWithTag("Traveling");
 
 
         if (cameraBehavior == 1 && boss != null)
@@ -167,6 +175,20 @@ public class Camera_Follow : MonoBehaviour
             float t = 0;
             t += 2 * Time.deltaTime;
             gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, cameraSize7, t);
+            hud.SetActive(false);
+        }
+        else if (cameraBehavior == 8)
+        {
+            player.GetComponent<Player_Health>().enabled = false;
+            player.GetComponent<Player_Movement>().enabled = false;
+            player.GetComponent<Player_Shooting>().enabled = false;
+
+            target = traveling.transform.position;
+            timeOffset = timeOffset8;
+            posOffset = posOffset8;
+            float t = 0;
+            t += 0.02f * Time.deltaTime;
+            gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, cameraSize8, t);
             hud.SetActive(false);
         }
 

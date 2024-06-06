@@ -594,7 +594,7 @@ MonoBehaviour:
   speechBubble2: {fileID: 2395488159013917376, guid: dd6e27e2f1a9a084da9dbabe67cf41a1, type: 3}
   speechOffset: 30
   pattern1BossWaypoints: []
-  dashCdPattern1: 1.5
+  dashCdPattern1: 1.8
   dashSpeed: 4
   maxPattern1Count: 11
   pattern2BossWaypoint: {fileID: 7384943168256770892}
@@ -611,6 +611,7 @@ MonoBehaviour:
   maxVelocityY: 200
   basePos: {fileID: 5945960706397578815}
   clock: 0
+  targetIndex: 0
 --- !u!70 &3631631127717162059
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

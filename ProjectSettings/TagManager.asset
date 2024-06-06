@@ -21,6 +21,7 @@ TagManager:
   - Boss 2 Range Pattern 3 Waypoint
   - Boss2
   - Speech Bubble
+  - Traveling
   layers:
   - Default
   - TransparentFX
