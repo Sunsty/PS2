@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 285706605076830127}
   - component: {fileID: 4744212089163900964}
   - component: {fileID: 1935055636463346958}
+  - component: {fileID: 5276687101676272870}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -129,6 +130,27 @@ MonoBehaviour:
   fullOffset: 40
   wallOffsetPattern3: 1.8
   maxWallCountPattern3: 3
+--- !u!95 &5276687101676272870
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766552141664882571}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c277e99d0f50ed1498d5ffd95ae73115, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3628361617097074565
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572626416041524853, guid: 13287c05205d39541a24694dd6987dda, type: 3}
       propertyPath: m_LocalScale.x
-      value: 17.726858
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5572626416041524853, guid: 13287c05205d39541a24694dd6987dda, type: 3}
       propertyPath: m_LocalPosition.x

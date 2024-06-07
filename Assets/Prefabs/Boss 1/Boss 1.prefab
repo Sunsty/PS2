@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 8814395086714759480}
   - component: {fileID: 7669691642736937206}
   - component: {fileID: 3171205499006583560}
+  - component: {fileID: 4618944791632371652}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -311,9 +312,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   dashCdPattern1: 5
+  backCdPattern1: 1
   dashSpeedPattern1: 1.5
   normalSpeedPattern1: 1
-  maxPattern1Count: 4
+  backSpeedPattern1: 0.5
+  maxPattern1Count: 9
   fireBall: {fileID: 8525503435363123609, guid: a0dfd78798f756f43850e7e0a766b3ac, type: 3}
   pattern2BossWaypoints:
   - {fileID: 0}
@@ -321,29 +324,52 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   dashCdPattern2: 7
+  backCdPattern2: 1.5
   dashSpeedPattern2: 1.8
   normalSpeedPattern2: 1
-  maxPattern2Count: 4
+  backSpeedPattern2: 0.5
+  maxPattern2Count: 6
   circleWaveProjectile: {fileID: 3685789619600078298, guid: cf3bd19fb34e0d24186058ce6801d10d, type: 3}
   pattern3BossWaypoint: {fileID: 8479699929504512719}
   normalSpeedPattern3: 5
   wavesCd: 3
   baseNbrProjectile: 15
-  pattern3Duration: 30
+  pattern3Duration: 20
   cinematicBossWaypoint: {fileID: 2202563412980781534}
   secondPhaseHealth: 1500
   dashCdPattern1Enraged: 3
   dashSpeedPattern1Enraged: 1.8
   normalSpeedPattern1Enraged: 1.2
-  maxPattern1CountEnraged: 6
+  maxPattern1CountEnraged: 15
   dashCdPattern2Enraged: 5
   dashSpeedPattern2Enraged: 2
   normalSpeedPattern2Enraged: 1.2
-  maxPattern2CountEnraged: 4
+  maxPattern2CountEnraged: 9
   normalSpeedPattern3Enraged: 5
   wavesCdEnraged: 2.2
   baseNbrProjectileEnraged: 18
   pattern3DurationEnraged: 30
+--- !u!95 &4618944791632371652
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5499390762845273808}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f94e313f6cc5d754dbc1cfa3730a43ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8479699929504512719
 GameObject:
   m_ObjectHideFlags: 0

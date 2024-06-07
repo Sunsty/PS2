@@ -187,7 +187,7 @@ public class Camera_Follow : MonoBehaviour
             timeOffset = timeOffset8;
             posOffset = posOffset8;
             float t = 0;
-            t += 0.02f * Time.deltaTime;
+            t += 0.05f * Time.deltaTime;
             gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, cameraSize8, t);
             hud.SetActive(false);
         }

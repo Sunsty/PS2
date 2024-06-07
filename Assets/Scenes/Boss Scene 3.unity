@@ -680,8 +680,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  speed: 7
+  speed: 15
   rb: {fileID: 2055963409}
+  title: {fileID: 8227166584532813703, guid: 55a89846e54ccbe4a82efcd3f05fef6f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

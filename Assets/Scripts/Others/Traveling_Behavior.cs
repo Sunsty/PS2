@@ -7,6 +7,7 @@ public class Traveling_Behavior : MonoBehaviour
     [SerializeField] public bool active;
     [SerializeField] public float speed;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject title;
 
     bool endScreen;
     private void Update()
@@ -18,9 +19,15 @@ public class Traveling_Behavior : MonoBehaviour
 
         if (transform.position.y > 652)
         {
-            active = false;
             rb.velocity = Vector3.zero;
             endScreen = true;
+            if (active)
+            {
+                Instantiate(title, transform.position, Quaternion.identity);
+            }
+
+            active = false;
+
         }
     }
 }

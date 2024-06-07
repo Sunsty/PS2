@@ -61,8 +61,10 @@ public class Boss1_Patterns : MonoBehaviour
     [SerializeField] GameObject[] pattern1BossWaypoints;
 
     [SerializeField] float dashCdPattern1;
+    [SerializeField] float backCdPattern1;
     [SerializeField] float dashSpeedPattern1;
     [SerializeField] float normalSpeedPattern1;
+    [SerializeField] float backSpeedPattern1;
     [SerializeField] int maxPattern1Count;
 
     int pattern1Count;
@@ -73,8 +75,10 @@ public class Boss1_Patterns : MonoBehaviour
     [SerializeField] GameObject[] pattern2BossWaypoints;
 
     [SerializeField] float dashCdPattern2;
+    [SerializeField] float backCdPattern2;
     [SerializeField] float dashSpeedPattern2;
     [SerializeField] float normalSpeedPattern2;
+    [SerializeField] float backSpeedPattern2;
     [SerializeField] int maxPattern2Count;
 
     int pattern2Count;
@@ -164,9 +168,14 @@ public class Boss1_Patterns : MonoBehaviour
 
             bossBar.SetActive(true);
 
-            if (clock <= 0)
+            if (clock <= 0 && (targetIndex == 0 || targetIndex == 3))
             {
                 clock = dashCdPattern1;
+            }
+
+            if (clock <= 0 && (targetIndex == 1 || targetIndex == 4))
+            {
+                clock = backCdPattern1;
             }
 
             if (clock > 0)
@@ -177,25 +186,29 @@ public class Boss1_Patterns : MonoBehaviour
                 {
                     pattern1Count++;
                     targetIndex += 1;
-                    targetIndex = targetIndex % 4;
+                    targetIndex %= pattern1BossWaypoints.Length;
                 }
             }
 
-            if ((Vector2.Distance(transform.position, pattern1BossWaypoints[1].transform.position) <= 15f && targetIndex == 1) || (Vector2.Distance(transform.position, pattern1BossWaypoints[3].transform.position) <= 15f && targetIndex == 3))
+            if ((Vector2.Distance(transform.position, pattern1BossWaypoints[2].transform.position) <= 15f && targetIndex == 2) || (Vector2.Distance(transform.position, pattern1BossWaypoints[5].transform.position) <= 15f && targetIndex == 5))
             {
                 clock = dashCdPattern1;
-                targetIndex += 1;
-                targetIndex = targetIndex % 4;
+                pattern1Count++;
+                targetIndex++;
+                targetIndex %= pattern1BossWaypoints.Length;
             }
 
-            if (targetIndex == 0 || targetIndex == 2)
+            if (targetIndex == 2 || targetIndex == 5)
+            {
+                moveSpeed = dashSpeedPattern1;
+            }
+            else if (targetIndex == 0 || targetIndex == 3)
             {
                 moveSpeed = normalSpeedPattern1;
             }
-
-            if (targetIndex == 1 || targetIndex == 3)
+            else
             {
-                moveSpeed = dashSpeedPattern1;
+                moveSpeed = backSpeedPattern1;
             }
 
             if (pattern1Count == maxPattern1Count)
@@ -215,9 +228,14 @@ public class Boss1_Patterns : MonoBehaviour
         {
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(1);
 
-            if (clock <= 0)
+            if (clock <= 0 && (targetIndex == 0 || targetIndex == 3))
             {
                 clock = dashCdPattern2;
+            }
+
+            if (clock <= 0 && (targetIndex == 1 || targetIndex == 4))
+            {
+                clock = backCdPattern2;
             }
 
             if (clock > 0)
@@ -228,33 +246,37 @@ public class Boss1_Patterns : MonoBehaviour
                 {
                     pattern2Count++;
                     targetIndex += 1;
-                    targetIndex = targetIndex % 4;
+                    targetIndex %= pattern2BossWaypoints.Length;
                 }
             }
 
-            if ((Vector2.Distance(transform.position, pattern2BossWaypoints[1].transform.position) <= 15f && targetIndex == 1) || (Vector2.Distance(transform.position, pattern2BossWaypoints[3].transform.position) <= 15f && targetIndex == 3))
+            if ((Vector2.Distance(transform.position, pattern2BossWaypoints[2].transform.position) <= 15f && targetIndex == 2) || (Vector2.Distance(transform.position, pattern2BossWaypoints[5].transform.position) <= 15f && targetIndex == 5))
             {
                 clock = dashCdPattern2;
-                targetIndex += 1;
-                targetIndex = targetIndex % 4;
+                pattern2Count++;
+                targetIndex++;
+                targetIndex %= pattern2BossWaypoints.Length;
             }
 
-            if (targetIndex == 0 || targetIndex == 2)
+            if (targetIndex == 2 || targetIndex == 5)
+            {
+                moveSpeed = dashSpeedPattern2;
+            }
+            else if (targetIndex == 0 || targetIndex == 3)
             {
                 moveSpeed = normalSpeedPattern2;
             }
-
-            if (targetIndex == 1 || targetIndex == 3)
+            else
             {
-                moveSpeed = dashSpeedPattern2;
+                moveSpeed = backSpeedPattern2;
             }
 
             if (pattern2Count == maxPattern2Count)
             {
                 currentPattern = 3;
                 clock = 0f;
-                targetIndex = 0;
                 pattern2Count = 0;
+                targetIndex = 0;
             }
         }
 
@@ -355,14 +377,15 @@ public class Boss1_Patterns : MonoBehaviour
 
         if (currentPattern == 2)
         {
-            if (targetIndex == 0 || targetIndex == 2)
+     
+            if (targetIndex == 2 || targetIndex == 5)
+            {
+                transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoints[targetIndex].transform.position, moveSpeed * Time.deltaTime * 70f));
+            }
+            else
             {
                 float distance = Vector2.Distance(transform.position, pattern2BossWaypoints[targetIndex].transform.position);
                 transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoints[targetIndex].transform.position, moveSpeed * Time.deltaTime * distance));
-            }
-            else if (targetIndex == 1 || targetIndex == 3)
-            {
-                transform.position = (Vector2.MoveTowards(transform.position, pattern2BossWaypoints[targetIndex].transform.position, moveSpeed * Time.deltaTime * 70f));
             }
 
             if (clockTrail <= 0f)
@@ -375,9 +398,9 @@ public class Boss1_Patterns : MonoBehaviour
                 clockTrail -= Time.deltaTime;
                 if (clockTrail < 0f)
                 {
-                    if (targetIndex == 1 || targetIndex == 3)
+                    if (targetIndex == 2 || targetIndex == 5)
                     {
-                    Instantiate(fireBall, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
+                        Instantiate(fireBall, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
                     }
                 }
             }
@@ -451,6 +474,7 @@ public class Boss1_Patterns : MonoBehaviour
             wavesCd = wavesCdEnraged;
             baseNbrProjectile = baseNbrProjectileEnraged;
             pattern3Duration = pattern3DurationEnraged;
+
         }
     }
 

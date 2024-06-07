@@ -433,10 +433,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3946805457466770811, guid: 50b3728dccdd4ca4b9dd5b21ad83e84c, type: 3}
+      propertyPath: m_Name
+      value: Boss waypoint 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000235755028584066, guid: 50b3728dccdd4ca4b9dd5b21ad83e84c, type: 3}
+      propertyPath: m_Name
+      value: Boss waypoint 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5994433438037744933, guid: 50b3728dccdd4ca4b9dd5b21ad83e84c, type: 3}
       propertyPath: fuelBar
       value: 
       objectReference: {fileID: 420808587}
+    - target: {fileID: 7408013235829852150, guid: 50b3728dccdd4ca4b9dd5b21ad83e84c, type: 3}
+      propertyPath: m_Name
+      value: Boss waypoint 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7528415593891293575, guid: 50b3728dccdd4ca4b9dd5b21ad83e84c, type: 3}
       propertyPath: healthBar
       value: 
@@ -629,6 +641,7 @@ MonoBehaviour:
   player: {fileID: 0}
   boss: {fileID: 0}
   boss2: {fileID: 0}
+  traveling: {fileID: 0}
   hud: {fileID: 643714577}
   cameraBehavior: 2
   timeOffset1: 0.1
@@ -652,6 +665,9 @@ MonoBehaviour:
   timeOffset7: 0.1
   posOffset7: {x: 0, y: 12, z: -10}
   cameraSize7: 26
+  timeOffset8: 0
+  posOffset8: {x: 0, y: 0, z: 0}
+  cameraSize8: 0
 --- !u!1 &643714577
 GameObject:
   m_ObjectHideFlags: 0
