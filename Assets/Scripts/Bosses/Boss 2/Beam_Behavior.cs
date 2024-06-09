@@ -13,4 +13,9 @@ public class Beam_Behavior : MonoBehaviour
             collision.gameObject.GetComponent<Player_Health>().TakeDamage(contactDmg);
         }
     }
+
+    public void HitBoxActivate()
+    {
+        transform.GetComponent<BoxCollider2D>().enabled = true;
+    }
 }

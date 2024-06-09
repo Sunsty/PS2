@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 /// <summary>
 /// 
@@ -143,6 +139,7 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
         if (currentPattern == 1)
         {
+            rb.velocity = Vector3.zero;
             groundCollider.enabled = false;
 
             if (clock <= 0)
@@ -184,6 +181,7 @@ public class Boss2Melee_Patterns : MonoBehaviour
 
         if (currentPattern == 2)
         {
+            rb.velocity = Vector3.zero;
             groundCollider.enabled = false;
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -260,7 +258,7 @@ public class Boss2Melee_Patterns : MonoBehaviour
                     clock = groundCdPattern3;
                 }
 
-                rb.AddForce(Vector2.down * stompForce);
+                rb.AddForce(Vector2.down * stompForce * Time.deltaTime);
                 float tempClampY = Mathf.Clamp(rb.velocity.y, -maxVelocityY, maxVelocityY);
                 rb.velocity = new Vector2(rb.velocity.x, tempClampY);
             }

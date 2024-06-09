@@ -131,7 +131,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 40
   idleDuration: 3
-  contactDmg: 100
+  contactDmg: 1
 --- !u!114 &-167750772431951554
 MonoBehaviour:
   m_ObjectHideFlags: 0

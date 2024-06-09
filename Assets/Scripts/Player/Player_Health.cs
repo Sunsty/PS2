@@ -15,9 +15,9 @@ public class Player_Health : MonoBehaviour
 
     [Header("Settings")]
 
-    [SerializeField] float maxHealth;
-    [SerializeField] float regenAmount;
-    [SerializeField] float iFramesAmount;
+    [SerializeField] public float maxHealth;
+    [SerializeField] public float regenAmount;
+    [SerializeField] public float iFramesAmount;
 
     [Header("")]
 
@@ -30,7 +30,8 @@ public class Player_Health : MonoBehaviour
     bool initIFrames;
     float clockDashIFrames;
     float dashIFramesLenght;
-
+    [HideInInspector] public bool godMode;
+    
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -132,7 +133,12 @@ public class Player_Health : MonoBehaviour
     {
         if (canTakeDmg)
         {
-            health -= damage;
+            float temp = 0;
+            if (godMode)
+            {
+                temp = damage;
+            }
+            health -= damage - temp;
             canTakeDmg = false;
         }
     }

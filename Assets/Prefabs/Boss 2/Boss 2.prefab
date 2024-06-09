@@ -357,7 +357,7 @@ MonoBehaviour:
   currentPattern: 0
   speechBubble1: {fileID: 2395488159013917376, guid: d7633e6aabf411c45bf31bc16146caa3, type: 3}
   speechBubble2: {fileID: 2395488159013917376, guid: 2716e484b7dd28b409ca442c8aafc601, type: 3}
-  speechOffset: 30
+  speechOffset: 20
   bulletPattern1: {fileID: 6425355823059613185, guid: 62c0e34da756eac4abe3b2d18c7f0c02, type: 3}
   speedPattern1: 40
   orbitRange: 55
@@ -618,7 +618,7 @@ MonoBehaviour:
   currentPattern: 0
   speechBubble1: {fileID: 2395488159013917376, guid: 4db443abce4ce9244ad625ac6f94c961, type: 3}
   speechBubble2: {fileID: 2395488159013917376, guid: dd6e27e2f1a9a084da9dbabe67cf41a1, type: 3}
-  speechOffset: 30
+  speechOffset: 20
   pattern1BossWaypoints: []
   dashCdPattern1: 1.8
   dashSpeed: 4
@@ -633,7 +633,7 @@ MonoBehaviour:
   dashCdPattern3: 3
   groundCdPattern3: 1.5
   speedPattern3: 2
-  stompForce: 15
+  stompForce: 5000
   maxVelocityY: 200
   basePos: {fileID: 5945960706397578815}
   clock: 0

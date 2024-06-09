@@ -173,8 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  animator: {fileID: 0}
   oWPlatorms: []
-  travelLenght: 20
+  mapBound: {fileID: 0}
+  travelLenght: 10
   projectileDmg: 30
 --- !u!95 &8278480666104771043
 Animator:

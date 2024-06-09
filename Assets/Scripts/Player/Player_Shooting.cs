@@ -24,6 +24,7 @@ public class Player_Shooting : MonoBehaviour
     bool isShooting = true;
     float shootingCounter;
     bool wantsToShot;
+    [HideInInspector] public bool powerMode;
 
     private void Start()
     {
@@ -32,7 +33,17 @@ public class Player_Shooting : MonoBehaviour
 
     private void Update()
     {
-        bullet.GetComponent<Projectile_Behavior>().projectileDmg = projectileDmg;
+        float temp = 0;
+        if (powerMode)
+        {
+            temp = 970;
+        }
+        else
+        {
+            temp = 0;
+        }
+
+        bullet.GetComponent<Projectile_Behavior>().projectileDmg = projectileDmg + temp;
 
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;

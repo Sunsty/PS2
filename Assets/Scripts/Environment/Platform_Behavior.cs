@@ -97,7 +97,7 @@ public class Platform_Behavior : MonoBehaviour
             {
                 if (!shieldUp)
                 {
-                    shieldClone = Instantiate(shieldGmO, transform.position, Quaternion.identity);
+                    shieldClone = Instantiate(shieldGmO, new Vector2(transform.position.x, transform.position.y + 5), Quaternion.identity);
                     shieldUp = true;
                 }
             }

@@ -287,6 +287,8 @@ public class Boss2Range_Patterns : MonoBehaviour
 
         if (currentPattern == 4)
         {
+            Destroy(wheelClone);
+
             transform.position = basePos.transform.position;
 
             if (GameObject.FindGameObjectWithTag("Speech Bubble") == null)

@@ -93,8 +93,6 @@ public class Boss1_Patterns : MonoBehaviour
     [SerializeField] int baseNbrProjectile;
     [SerializeField] float pattern3Duration;
 
-    int pattern3Count;
-
     [Header("Pattern 4"), Space(10)]
 
     [SerializeField] GameObject cinematicBossWaypoint;
@@ -144,6 +142,11 @@ public class Boss1_Patterns : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (bossBar == null)
+        {
+            bossBar = GameObject.Find("Boss Bar");
+        }
+
         ///////////////////// - Pattern 0 - /////////////////////
 
         if (currentPattern == 0)
@@ -317,7 +320,6 @@ public class Boss1_Patterns : MonoBehaviour
             clockWaves = 0f;
             pattern1Count = 0;
             pattern2Count = 0;
-            pattern3Count = 0;
             targetIndex = 0;
             enraged = true;
         }

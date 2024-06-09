@@ -18,8 +18,7 @@ public class SceneLoadTrigger_Behavior : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            bossBar.SetActive(true);
-            SceneManager.LoadScene(scene);
+            GameObject.Find("Scene Loader").GetComponent<SceneLoader_Behavior>().LoadScene(scene);
         }
     }
 }

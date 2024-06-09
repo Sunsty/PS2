@@ -7,6 +7,7 @@ public class Projectile_Behavior : MonoBehaviour
     public GameObject player;
     public Animator animator;
     public GameObject[] oWPlatorms;
+    public GameObject mapBound;
     
     public float travelLenght;
     public float projectileDmg;
@@ -24,6 +25,11 @@ public class Projectile_Behavior : MonoBehaviour
         foreach (var item  in oWPlatorms)
         {
             Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+        mapBound = GameObject.Find("Map Bounds");
+        if (mapBound != null)
+        {
+            Physics2D.IgnoreCollision(mapBound.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
 

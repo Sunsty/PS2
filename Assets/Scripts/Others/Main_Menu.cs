@@ -7,7 +7,7 @@ public class Main_Menu : MonoBehaviour
 {
     public void LoadScene(int scene)
     {
-        SceneManager.LoadScene(scene);
+        GameObject.Find("Scene Loader").GetComponent<SceneLoader_Behavior>().LoadScene(scene);
     }
 
     public void QuitGame()

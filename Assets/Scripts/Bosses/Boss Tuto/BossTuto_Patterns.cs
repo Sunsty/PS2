@@ -119,8 +119,18 @@ public class BossTuto_Patterns : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (mainCamera == null)
+        {
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+        if (bossBar == null)
+        {
+            bossBar = GameObject.Find("Boss Bar");
+        }
+
+
         if (!player.GetComponent<Player_Health>().IsFullLife() && currentPattern == 2)
         {
             player.GetComponent<Player_Health>().Heal();
@@ -162,8 +172,6 @@ public class BossTuto_Patterns : MonoBehaviour
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
 
-        bossBar.SetActive(false);
-
         ///////////////////// - Pattern Cine 0 - /////////////////////
 
         if (currentPattern == 0)
@@ -188,7 +196,7 @@ public class BossTuto_Patterns : MonoBehaviour
                 speechBubbleSpawned = false;
             }
 
-            clock = 0f;
+            clock = -1f;
             wallCountPattern1 = 0;
 
             mainCamera.GetComponent<Camera_Follow>().SwitchCameraBehavior(5);
@@ -219,7 +227,7 @@ public class BossTuto_Patterns : MonoBehaviour
 
             if (clock > 0)
             {
-                clock -= Time.deltaTime;
+                clock -= Time.fixedDeltaTime;
 
                 if (clock < 0)
                 {

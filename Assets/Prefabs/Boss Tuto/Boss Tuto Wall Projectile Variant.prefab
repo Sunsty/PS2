@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: lifeSpan
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: -5897340900545489124, guid: 4e76e0e3beb8df643b4aece222137581, type: 3}
+      propertyPath: projectileDmg
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2681540581699992244, guid: 4e76e0e3beb8df643b4aece222137581, type: 3}
       propertyPath: m_Name
       value: Boss Tuto Wall Projectile Variant
